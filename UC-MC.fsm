@@ -56,7 +56,7 @@
       <inputs default="0" any="0" invert="0">Bus_TRDY=0</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="917.922613036455" c2y="259.35826753523" c1y="280.7053801863552" description="" straight="1" type="2" ypos="302.0524928374804" endx="677.4609579056329" xpos="1038.153440601866" endy="238.0111548841049" c2x="797.6917854710438">
+    <transition c1x="917.9226130364549" c2y="259.3582675352301" c1y="280.7053801863552" description="" straight="1" type="2" ypos="302.0524928374804" endx="677.4609579056329" xpos="1038.153440601866" endy="238.0111548841049" c2x="797.6917854710439">
       <from>0</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=1</inputs>
@@ -80,7 +80,7 @@
       <inputs default="0" any="0" invert="0">Bus_TRDY=0</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="842.0439574104621" c2y="773.8821448846595" c1y="747.1454533185537" description="" straight="1" type="2" ypos="720.4087617524481" endx="1072.887903436904" xpos="726.6219843972416" endy="800.6188364507651" c2x="957.4659304236831">
+    <transition c1x="842.0439574104624" c2y="773.8821448846594" c1y="747.1454533185538" description="" straight="1" type="2" ypos="720.4087617524481" endx="1072.887903436904" xpos="726.6219843972416" endy="800.6188364507651" c2x="957.4659304236832">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=1</inputs>
@@ -105,7 +105,7 @@
     <transition c1x="703.6491382024674" c2y="372.1983676356148" c1y="444.6816617317526" straight="0" type="2" ypos="459" endx="634.2341911752628" xpos="791" endy="288.7150735394769" c2x="638.9416646888651">
       <to>5</to>
       <inputs></inputs>
-      <outputs>MC_WE=1, MUX_origen=1, palabra_UC=1, Repl_block_ready=0</outputs>
+      <outputs>MC_WE=1,MUX_origen=1,palabra_UC=1,Repl_block=1,ready=0</outputs>
     </transition>
   </machine>
 </qfsmproject>
