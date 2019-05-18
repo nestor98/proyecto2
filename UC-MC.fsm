@@ -1,18 +1,18 @@
 <?xml version='1.0'?>
 <!DOCTYPE qfsmproject SYSTEM 'qfsm.dtd'>
 <qfsmproject version="0.54" author="Qfsm">
-  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="" description="" version="" name="735418-multi2" arrowtype="1" numbits="3" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="5">
+  <machine nummooreout="0" transfontitalic="0" draw_it="1" statefontsize="8" transfont="Helvetica" statefontitalic="0" author="" description="" version="" name="735418-multi2" arrowtype="1" numbits="4" statefontweight="50" statefont="Helvetica" numin="0" transfontsize="8" transfontweight="50" type="2" numout="0" initialstate="5">
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
     <itransition ypos="250" endx="599" xpos="474" endy="249"/>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="249" code="5" xpos="639" linewidth="1">Inicial</state>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="129" code="6" xpos="1314" linewidth="1">esperarDevSel_W</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="315" code="1" xpos="1076" linewidth="1">esperarTRDY_W</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="524" code="0" xpos="367" linewidth="1">esperarDevSel_R</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="710" code="2" xpos="688" linewidth="1">esperarTRDY_R</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="809" code="4" xpos="1112" linewidth="1">palabra1_C</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="564" code="3" xpos="1203" linewidth="1">palabra2_C</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="315" code="0" xpos="1076" linewidth="1">esperarTRDY_W</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="524" code="8" xpos="367" linewidth="1">esperarDevSel_R</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="710" code="1" xpos="688" linewidth="1">esperarTRDY_R</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="809" code="2" xpos="1112" linewidth="1">palabra1_C</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="564" code="4" xpos="1203" linewidth="1">palabra2_C</state>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="464" code="7" xpos="831" linewidth="1">palabra3_C</state>
     <transition c1x="468.0405173016978" c2y="114.469126793467" c1y="208.2179522778346" description="" straight="0" type="2" ypos="234.3133386105581" endx="612.7528514030086" xpos="601.7937911467471" endy="218.8157791134598" c2x="544.2452928574811">
       <from>5</from>
@@ -40,60 +40,60 @@
     </transition>
     <transition c1x="385.530318249384" c2y="397.3350272298052" c1y="306.9406486403907" description="" straight="0" type="2" ypos="268.1540852272229" endx="360.0485866436381" xpos="603.8841770834247" endy="484.6086576472825" c2x="364.0512388127951">
       <from>5</from>
-      <to>0</to>
+      <to>8</to>
       <inputs default="0" any="0" invert="0">RE=1,hit=0</inputs>
       <outputs>Block_addr=1,MC_Frame=1,MC_send_addr=1,MC_bus_Rd_Wr=0</outputs>
     </transition>
     <transition c1x="1294.533720830658" c2y="308.0857229455846" c1y="299.2485857211118" description="" straight="0" type="2" ypos="169" endx="1115.962246334202" xpos="1314.000001142857" endy="316.7374889710522" c2x="1245.936435727355">
       <from>6</from>
-      <to>1</to>
+      <to>0</to>
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=1</inputs>
       <outputs>MC_send_addr=0</outputs>
     </transition>
     <transition c1x="1176.830455759143" c2y="446.0962928671812" c1y="382.8214918964869" description="" straight="0" type="2" ypos="347.2956448903159" endx="1073.150118000484" xpos="1099.600663573692" endy="354.8983479932294" c2x="1073.680161954606">
-      <from>1</from>
-      <to>1</to>
+      <from>0</from>
+      <to>0</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=0</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="917.922613036455" c2y="259.35826753523" c1y="280.7053801863552" description="" straight="1" type="2" ypos="302.0524928374804" endx="677.4609579056329" xpos="1038.153440601866" endy="238.0111548841049" c2x="797.6917854710438">
-      <from>1</from>
+      <from>0</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=1</inputs>
       <outputs>ready=1,MC_send_data=1</outputs>
     </transition>
     <transition c1x="204.0648177439466" c2y="643.1406108611279" c1y="600.6812826922984" description="" straight="0" type="2" ypos="529.9922151771198" endx="344.5399432665094" xpos="327.4513798310093" endy="557.0990309756703" c2x="252.988516724968">
-      <from>0</from>
-      <to>0</to>
+      <from>8</from>
+      <to>8</to>
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=0</inputs>
       <outputs>Block_addr=1,MC_Frame=1,MC_send_addr=1,MC_bus_Rd_Wr=1</outputs>
     </transition>
     <transition c1x="588.7911653759991" c2y="641.018606807002" c1y="604.3742939832068" description="" straight="0" type="2" ypos="543.3963022365443" endx="658.1036272526536" xpos="401.9826165337675" endy="683.4254464468032" c2x="599.5118408620151">
-      <from>0</from>
-      <to>2</to>
+      <from>8</from>
+      <to>1</to>
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=1</inputs>
       <outputs>MC_send_addr=0</outputs>
     </transition>
     <transition c1x="694.3326053129453" c2y="804.4983761145552" c1y="824.101678758139" description="" straight="0" type="2" ypos="747.2801868616518" endx="654.2072369778309" xpos="673.502149553802" endy="731.4020832473738" c2x="584.8873989324372">
-      <from>2</from>
-      <to>2</to>
+      <from>1</from>
+      <to>1</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=0</inputs>
       <outputs></outputs>
     </transition>
     <transition c1x="842.0439574104621" c2y="773.8821448846595" c1y="747.1454533185537" description="" straight="1" type="2" ypos="720.4087617524481" endx="1072.887903436904" xpos="726.6219843972416" endy="800.6188364507651" c2x="957.4659304236831">
-      <from>2</from>
-      <to>4</to>
+      <from>1</from>
+      <to>2</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=1</inputs>
       <outputs>MC_WE=1,MUX_origen=1,palabra_UC=00</outputs>
     </transition>
     <transition c1x="1180.45196038387" c2y="662.3742281398596" c1y="732.7221799616386" description="" straight="0" type="2" ypos="781.7819560253089" endx="1199.01985123916" xpos="1141.311739665052" endy="603.8014876083996" c2x="1216.488908853863">
-      <from>4</from>
-      <to>3</to>
+      <from>2</from>
+      <to>4</to>
       <inputs default="0" any="0" invert="0"></inputs>
       <outputs>MC_WE=1,MUX_origen=1,palabra_UC=01</outputs>
     </transition>
     <transition c1x="1092.17109485231" c2y="509.6200855564539" c1y="532.0948593334357" description="" straight="0" type="2" ypos="556.9683744606537" endx="867.5524619448103" xpos="1163.622896979661" endy="480.2455386421379" c2x="929.8320769896968">
-      <from>3</from>
+      <from>4</from>
       <to>7</to>
       <inputs default="0" any="0" invert="0"></inputs>
       <outputs>MC_WE=1,MUX_origen=1,palabra_UC=10</outputs>
