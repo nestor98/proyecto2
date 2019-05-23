@@ -5,51 +5,51 @@
     <outputnames_moore></outputnames_moore>
     <inputnames></inputnames>
     <outputnames></outputnames>
-    <itransition ypos="222" endx="710" xpos="585" endy="221"/>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="221" code="5" xpos="750" linewidth="1">Inicial</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="129" code="6" xpos="1509" linewidth="1">esperarDevSel_W</state>
+    <itransition ypos="220" endx="710" xpos="585" endy="219"/>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="219" code="5" xpos="750" linewidth="1">Inicial</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="139" code="6" xpos="1521" linewidth="1">esperarDevSel_W</state>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="407" code="0" xpos="1423" linewidth="1">esperarTRDY_W</state>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="524" code="8" xpos="367" linewidth="1">esperarDevSel_R</state>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="760" code="1" xpos="672" linewidth="1">esperarTRDY_R</state>
-    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="738" code="2" xpos="1262" linewidth="1">TransPalabras</state>
+    <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="742" code="2" xpos="1259" linewidth="1">TransPalabras</state>
     <state pencolor="0" exit_actions="" radius="40" description="" finalstate="0" entry_actions="" moore_outputs="" ypos="520" code="3" xpos="1059" linewidth="1">MC_Frame0</state>
-    <transition c1x="914.6415556655226" c2y="56.72591044680297" c1y="69.51339635005556" description="" straight="0" type="2" ypos="197.5803778462256" endx="1471.052668077979" xpos="782.4271691359952" endy="116.3508893593265" c2x="1206.337896815594">
+    <transition c1x="914.6415556655226" c2y="66.72591044680297" c1y="67.51339635005556" description="" straight="0" type="2" ypos="195.5803778462256" endx="1483.052668077979" xpos="782.4271691359952" endy="126.3508893593265" c2x="1218.337896815594">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">WE=1,hit=0</inputs>
       <outputs>MC_Frame=1,MC_bus_Rd_Wr=1,MC_send_addr=1</outputs>
     </transition>
-    <transition c1x="1035.791115235184" c2y="204.5029838864425" c1y="163.1892393964421" description="" straight="0" type="2" ypos="201.8459147727771" endx="1470.194299994187" xpos="785.1158229165753" endy="138.7014250014533" c2x="1245.000471626561">
+    <transition c1x="1043.791115235184" c2y="214.5029838864425" c1y="188.1892393964421" description="" straight="0" type="2" ypos="199.8459147727771" endx="1482.194299994187" xpos="785.1158229165753" endy="148.7014250014533" c2x="1257.000471626561">
       <from>5</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">WE=1,hit=1</inputs>
       <outputs>MC_Frame=1,MC_bus_Rd_Wr=1,MC_send_addr=1,MC_WE=1,mux_origen=0</outputs>
     </transition>
-    <transition c1x="568.0800095462043" c2y="29.18267117780425" c1y="76.64379061785226" description="" straight="0" type="2" ypos="189.1827311987001" endx="747.339239579049" xpos="725.7582713894858" endy="181.0885936857357" c2x="695.5444704363731">
+    <transition c1x="568.0800095462043" c2y="27.18267117780425" c1y="74.64379061785226" description="" straight="0" type="2" ypos="187.1827311987001" endx="747.339239579049" xpos="725.7582713894858" endy="179.0885936857357" c2x="695.5444704363731">
       <from>5</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">RE=0, WE=0</inputs>
       <outputs>ready=1</outputs>
     </transition>
-    <transition c1x="479.5829863273634" c2y="386.3513437713774" c1y="245.5897592810642" description="" straight="0" type="2" ypos="233.6491106406735" endx="368.1423909559551" xpos="712.0526680779794" endy="484.0163165415722" c2x="377.1936297687502">
+    <transition c1x="479.5829863273634" c2y="386.3513437713774" c1y="243.5897592810642" description="" straight="0" type="2" ypos="231.6491106406735" endx="368.1423909559551" xpos="712.0526680779794" endy="484.0163165415722" c2x="377.1936297687502">
       <from>5</from>
       <to>8</to>
       <inputs default="0" any="0" invert="0">RE=1,hit=0</inputs>
       <outputs>Block_addr=1,MC_Frame=1,MC_send_addr=1,MC_bus_Rd_Wr=0</outputs>
     </transition>
-    <transition c1x="516.525680757302" c2y="109.8079738779844" c1y="202.9836645479227" description="" straight="0" type="2" ypos="211.0649859892918" endx="717.0383230320254" xpos="711.2534453582382" endy="198.3388470845174" c2x="468.2836158895063">
+    <transition c1x="516.525680757302" c2y="107.8079738779844" c1y="200.9836645479227" description="" straight="0" type="2" ypos="209.0649859892918" endx="717.0383230320254" xpos="711.2534453582382" endy="196.3388470845174" c2x="468.2836158895063">
       <from>5</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">RE=1,hit=1</inputs>
       <outputs>ready=1,MC_RE=1,mux_origen=1</outputs>
     </transition>
-    <transition c1x="1574.533720830658" c2y="339.9638064551051" c1y="228.2485857211118" description="" straight="0" type="2" ypos="169" endx="1454.651400055687" xpos="1509.000001142857" endy="382.5420999569694" c2x="1543.761403145752">
+    <transition c1x="1586.533720830658" c2y="339.9638064551051" c1y="238.2485857211118" description="" straight="0" type="2" ypos="179" endx="1454.651400055687" xpos="1521.000001142857" endy="382.5420999569694" c2x="1543.761403145752">
       <from>6</from>
       <to>0</to>
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=1</inputs>
       <outputs>MC_send_addr=0</outputs>
     </transition>
-    <transition c1x="1531.611560098506" c2y="42.76299632667684" c1y="-38.8071417512426" description="" straight="0" type="2" ypos="89.02220372083383" endx="1537.965517241379" xpos="1510.332593209306" endy="101.4137931034483" c2x="1613.917832692704">
+    <transition c1x="1543.611560098506" c2y="52.76299632667684" c1y="-28.8071417512426" description="" straight="0" type="2" ypos="99.02220372083383" endx="1549.965517241379" xpos="1522.332593209306" endy="111.4137931034483" c2x="1625.917832692704">
       <from>6</from>
       <to>6</to>
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=0</inputs>
@@ -73,7 +73,7 @@
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=0</inputs>
       <outputs>Block_addr=1,MC_Frame=1,MC_send_addr=1,MC_bus_Rd_Wr=1</outputs>
     </transition>
-    <transition c1x="588.7911653759991" c2y="691.018606807002" c1y="604.3742939832068" description="" straight="0" type="2" ypos="543.3963022365443" endx="642.1036272526536" xpos="401.9826165337675" endy="733.4254464468032" c2x="583.5118408620151">
+    <transition c1x="588.7911653759991" c2y="682.0712748849815" c1y="604.3742939832068" description="" straight="0" type="2" ypos="543.3963022365443" endx="659.3508893593265" xpos="401.9826165337675" endy="722.0526680779794" c2x="648.8627302213416">
       <from>8</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">Bus_Dev_Sel=1</inputs>
@@ -85,37 +85,37 @@
       <inputs default="0" any="0" invert="0">Bus_TRDY=0</inputs>
       <outputs></outputs>
     </transition>
-    <transition c1x="881.3772907437955" c2y="743.2154782179927" c1y="756.8121199852204" description="" straight="1" type="2" ypos="770.4087617524481" endx="1222.887903436904" xpos="710.6219843972416" endy="729.618836450765" c2x="1052.13259709035">
+    <transition c1x="880.3772907437955" c2y="745.8821448846593" c1y="758.1454533185538" description="" straight="1" type="2" ypos="770.4087617524481" endx="1219.887903436904" xpos="710.6219843972416" endy="733.618836450765" c2x="1050.13259709035">
       <from>1</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=1</inputs>
       <outputs>MC_WE=1,MUX_origen=1,count_enable=1</outputs>
     </transition>
-    <transition c1x="1374.341934903178" c2y="777.9046842721099" c1y="888.2009645205804" description="" straight="0" type="2" ypos="771.4787845589418" endx="1301.574365414594" xpos="1283.889974519308" endy="743.8197596197932" c2x="1393.229406975378">
+    <transition c1x="1371.341934903178" c2y="781.9046842721099" c1y="892.2009645205804" description="" straight="0" type="2" ypos="775.4787845589418" endx="1298.574365414594" xpos="1280.889974519308" endy="747.8197596197932" c2x="1390.229406975378">
       <from>2</from>
       <to>2</to>
       <inputs default="0" any="0" invert="0">last_word=0</inputs>
       <outputs>MC_WE=1,MUX_origen=1,count_enable=1</outputs>
     </transition>
-    <transition c1x="1188.776527061023" c2y="596.1628934408609" c1y="654.4918528404371" description="" straight="0" type="2" ypos="706" endx="1075.109544570641" xpos="1238" endy="556.6126012969106" c2x="1120.687676071851">
+    <transition c1x="1185.776527061023" c2y="596.1628934408609" c1y="658.4918528404371" description="" straight="0" type="2" ypos="710" endx="1075.109544570641" xpos="1235" endy="556.6126012969106" c2x="1120.687676071851">
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">last_word=1</inputs>
-      <outputs>MC_WE=1,MUX_origen=1,palabra_UC=1,Repl_block=1,ready=0</outputs>
+      <outputs>MC_WE=1,MUX_origen=1,Repl_block=1,ready=0</outputs>
     </transition>
-    <transition c1x="1111.325270136404" c2y="272.0296600284373" c1y="310.274304835034" description="" straight="0" type="2" ypos="487.1840733292005" endx="789.5743654145941" xpos="1081.871706467527" endy="226.8197596197933" c2x="906.9336814991411">
+    <transition c1x="1111.325270136404" c2y="270.0296600284373" c1y="310.274304835034" description="" straight="0" type="2" ypos="487.1840733292005" endx="789.5743654145941" xpos="1081.871706467527" endy="224.8197596197933" c2x="906.9336814991411">
       <from>3</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">WE=1or(hit=0andRE=1)</inputs>
       <outputs>ready=0,MC_Frame=0</outputs>
     </transition>
-    <transition c1x="946.7521386674237" c2y="364.8795768724376" c1y="356.2845315000203" description="" straight="0" type="2" ypos="481.1942999941867" endx="763.4534558799262" xpos="1049.298574998547" endy="258.6696764637935" c2x="777.8127719644732">
+    <transition c1x="946.7521386674237" c2y="362.8795768724376" c1y="356.2845315000203" description="" straight="0" type="2" ypos="481.1942999941867" endx="763.4534558799262" xpos="1049.298574998547" endy="256.6696764637935" c2x="777.8127719644732">
       <from>3</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">RE=0,WE=0</inputs>
       <outputs>ready=1,MC_Frame=0</outputs>
     </transition>
-    <transition c1x="783.0405173016977" c2y="355.4136987289436" c1y="522.2179522778346" description="" straight="0" type="2" ypos="520" endx="725.1718822253775" xpos="1019" endy="252.3618329784705" c2x="709.661827801177">
+    <transition c1x="783.0405173016977" c2y="353.4136987289436" c1y="522.2179522778346" description="" straight="0" type="2" ypos="520" endx="725.1718822253775" xpos="1019" endy="250.3618329784705" c2x="709.661827801177">
       <from>3</from>
       <to>5</to>
       <inputs default="0" any="0" invert="0">RE=1,hit=1</inputs>

@@ -120,6 +120,103 @@ palabra <= palabra_UC;
         if (state = Inicio and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
 				ready <= '1';
+		elsif (state = Inicio and RE='1' and hit='1') then
+				next_state <= Inicio;
+				ready<='1';
+				MC_RE<='1';
+				mux_origen<='1';
+		elsif (state = Inicio and RE='1' and hit='0') then
+				next_state <= esperarDEVSel_R;
+				Block_addr<='1';
+				Frame<='1';
+				MC_send_addr<='1';
+				MC_bus_Rd_Wr<='0';
+		elsif (state = Inicio and WE='1' and hit='1') then
+				next_state <= esperarDEVSel_W;
+				Frame<='1';
+				MC_bus_Rd_Wr<='1';
+				MC_send_addr<='1';
+				MC_WE<='1';
+				mux_origen<='0';
+		elsif (state = Inicio and WE='1' and hit='0') then
+				next_state <= esperarDEVSel_W;
+				Frame<='1';
+				MC_bus_Rd_Wr<='1';
+				MC_send_addr<='1';
+		-- LECTURA:		
+		elsif (state = esperarDEVSel_R and Bus_DevSel='0') then
+				next_state <= esperarDEVSel_R;
+				Block_addr='1';
+				Frame='1';
+				MC_send_addr='1';
+				MC_bus_Rd_Wr='0';
+		elsif (state = esperarDEVSel_R and Bus_DevSel='1') then
+				next_state <= esperarTRDY_R;	
+				--Block_addr='1'; -- las de direccion se supone que se van
+				--MC_send_addr='1';
+				Frame='1'; 
+				MC_bus_Rd_Wr='0'; -- creo que esta sigue hasta el final
+		elsif (state = esperarTRDY_R and Bus_TRDY='0') then
+				next_state <= esperarTRDY_R;
+				Frame<='1'; 
+				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
+		elsif (state = esperarTRDY_R and Bus_TRDY='1') then
+				next_state <= transPalabras;
+				Frame<='1'; 
+				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
+				MC_WE<='1';
+				mux_origen<='1';
+				count_enable<='1';
+		elsif (state = transPalabras and last_word='0') then
+				next_state <= transPalabras;
+				Frame<='1'; 
+				MC_bus_Rd_Wr<='1'; -- creo que esta sigue hasta el final	
+				MC_WE<='1';
+				mux_origen<='1';
+				count_enable<='1';
+		elsif (state = transPalabras and last_word='1') then
+				next_state <= frame0;
+				Frame<='1'; 
+				MC_bus_Rd_Wr<='1'; -- creo que esta sigue hasta el final	
+				MC_WE<='1';
+				mux_origen<='1';
+				count_enable<='1';
+				Repl_block<='1';
+		-- FRAME A 0:
+		elsif (state = frame0 and RE='1' and hit='1') then
+				next_state <= Inicio;
+				ready<='1';
+				MC_RE<='1';
+				mux_origen<='1';
+				--Frame<='0'; -- lo hace por defecto
+		elsif (state = frame0 and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
+				next_state <= Inicio;
+				ready <= '1';
+				--Frame<=0; 
+		elsif (state = frame0 and (WE='1' or hit='0'))) then -- si no piden nada no hacemos nada
+				next_state <= Inicio;
+				ready <= '0';
+				--Frame <=0
+				
+		-- ESCRITURA: 
+		elsif (state = esperarDEVSel_W and Bus_DevSel='0') then
+				next_state <= esperarDEVSel_W;
+				Frame<='1';
+				MC_bus_Rd_Wr<='1';
+				MC_send_addr<='1';
+		elsif (state = esperarDEVSel_W and Bus_DevSel='1') then
+				next_state <= esperarTRDY_W;
+				Frame<='1';
+				MC_bus_Rd_Wr<='1';
+		elsif (state = esperarTRDY_W and Bus_TRDY='0') then
+				next_state <= esperarTRDY_W;
+				Frame<='1';
+				MC_bus_Rd_Wr<='1';
+		elsif (state = esperarTRDY_W and Bus_TRDY='1') then
+				next_state <= frame0;
+				Frame<='1';
+				ready<='1';
+				MC_send_data <= '1';
    	-- Poner aquí las condiciones de vuestra máquina de estado
 	--  elsif() then
    	--  else
