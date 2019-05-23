@@ -66,13 +66,16 @@ component mux4_1 is
            Dout : out  STD_LOGIC_VECTOR (31 downto 0));
 end component;
 
-component memoriaRAM_D is port (
-		CLK : in std_logic;
-		ADDR : in std_logic_vector (31 downto 0); --Dir 
-        Din : in std_logic_vector (31 downto 0);--entrada de datos para el puerto de escritura
-        WE : in std_logic;		-- write enable	
-		RE : in std_logic;		-- read enable		  
-		Dout : out std_logic_vector (31 downto 0));
+component MD_mas_MC is port (
+		  CLK : in std_logic;
+		  reset: in std_logic; 
+		  ADDR : in std_logic_vector (31 downto 0); --Dir solicitada por el Mips
+          Din : in std_logic_vector (31 downto 0);--entrada de datos desde el Mips
+          WE : in std_logic;		-- write enable	del MIPS
+		  RE : in std_logic;		-- read enable del MIPS	
+		  Mem_ready: out std_logic; -- indica si podemos hacer la operación solicitada en el ciclo actual
+		  Dout : out std_logic_vector (31 downto 0) --dato que se envía al Mips
+		  ); --salida que puede leer el MIPS
 end component;
 
 component memoriaRAM_I is port (
@@ -248,6 +251,15 @@ COMPONENT Banco_MEM
          RW_WB : OUT  std_logic_vector(4 downto 0)
         );
     END COMPONENT; 
+	
+	component counter is
+    Port ( clk : in  STD_LOGIC;
+           reset : in  STD_LOGIC;
+           count_enable : in  STD_LOGIC;
+           load : in  STD_LOGIC;
+           D_in  : in  STD_LOGIC_VECTOR (7 downto 0);
+		   count : out  STD_LOGIC_VECTOR (7 downto 0));
+	end component;	
 
 signal load_PC, RegWrite_ID, RegWrite_EX, RegWrite_MEM, RegWrite_WB, Z, Branch, BNE, RegRead, RegDst_ID, RegDst_EX, ALUSrc_ID, ALUSrc_EX: std_logic;
 signal MemtoReg_ID, MemtoReg_EX, MemtoReg_MEM, MemtoReg_WB, MemWrite_ID, MemWrite_EX, MemWrite_MEM, MemRead_ID, MemRead_EX, MemRead_MEM: std_logic;
@@ -261,7 +273,27 @@ signal Op_code_ID: std_logic_vector(5 downto 0);
 signal PCSrc: std_logic_vector(1 downto 0);
 signal MUX_ctrl_A, MUX_ctrl_B : std_logic_vector(1 downto 0);
 signal Mux_A_out, Mux_B_out: std_logic_vector(31 downto 0);
+signal Mem_ready : std_logic;
+signal ciclos, paradas_control, paradas_datos, paradas_memoria, mem_reads, mem_writes: std_logic_vector(7 downto 0); 
+signal inc_paradas_control, inc_paradas_datos, inc_paradas_memoria, inc_mem_reads, inc_mem_writes : std_logic;
+
 begin
+
+cont_ciclos: counter port map (clk => clk, reset => reset, count_enable => '1' , load=> '0', D_in => "00000000", count => ciclos);
+cont_paradas_control: counter port map (clk => clk, reset => reset, count_enable => inc_paradas_control , load=> '0', D_in => "00000000", count => paradas_control);
+cont_paradas_datos: counter port map (clk => clk, reset => reset, count_enable => inc_paradas_datos , load=> '0', D_in => "00000000", count => paradas_datos);
+cont_paradas_memoria: counter port map (clk => clk, reset => reset, count_enable => inc_paradas_memoria , load=> '0', D_in => "00000000", count => paradas_memoria);
+cont_mem_reads: counter port map (clk => clk, reset => reset, count_enable => inc_mem_reads , load=> '0', D_in => "00000000", count => mem_reads);
+cont_mem_writes: counter port map (clk => clk, reset => reset, count_enable => inc_mem_writes , load=> '0', D_in => "00000000", count => mem_writes);
+
+inc_paradas_control <= '1' when(riesgo_beq = '1') else '0';
+inc_paradas_datos  <= '1' when(riesgo_lw_uso = '1') else '0';
+inc_paradas_memoria <= '1' when(Mem_ready = '0') else '0';
+inc_mem_reads <= '1' when(IR_ID(31 downto 26)= "000010") else '0';
+inc_mem_writes <= '1' when(IR_ID(31 downto 26)= "000011") else '0';
+
+
+
 pc: reg32 port map (	Din => PC_in, clk => clk, reset => reset, load => load_PC, Dout => PC_out);
 
 load_PC <= avanzar_ID; -- Si paramos en ID, hay que parar tambi�n en IF
@@ -350,11 +382,17 @@ riesgo_beq_rt_d2 <= '1' when (Salto='1' and IR_ID(20 downto 16) = RW_MEM and Reg
 -->>>>>>> Stashed changes
 
 riesgo_beq <= riesgo_beq_rs_d1 or riesgo_beq_rs_d2 or riesgo_beq_rt_d1 or riesgo_beq_rt_d2;
+
+
+
+
 -- en funci�n de los riesgos se para o se permite continuar a la instrucci�n en ID
-avanzar_ID <= '0' when (riesgo_lw_uso = '1' or riesgo_beq = '1') else '1';
+avanzar_ID <= '0' when (riesgo_lw_uso = '1' or riesgo_beq = '1' or Mem_ready='0') else '1';
 -- Env�o de instrucci�n a EX. Adoptamos una soluci�n sencilla, si hay que parar pasamos hacia adelante las se�ales de control de una nop
 Op_code_ID <= IR_ID(31 downto 26) when avanzar_ID='1' else "000000";
 ------------------------------------------------------------
+
+
 
 UC_seg: UC port map (IR_op_code => Op_code_ID, Branch => Branch, RegDst => RegDst_ID,  ALUSrc => ALUSrc_ID, MemWrite => MemWrite_ID,  
 							MemRead => MemRead_ID, MemtoReg => MemtoReg_ID, RegWrite => RegWrite_ID, BNE => BNE);
@@ -417,7 +455,10 @@ Banco_EX_MEM: Banco_MEM PORT MAP ( 	ALU_out_EX => ALU_out_EX, ALU_out_MEM => ALU
 ------------------------------------------Etapa MEM-------------------------------------------------------------------
 --
 
-Mem_D: memoriaRAM_D PORT MAP (CLK => CLK, ADDR => ALU_out_MEM, Din => BusB_MEM, WE => MemWrite_MEM, RE => MemRead_MEM, Dout => Mem_out);
+Mem_D: MD_mas_MC PORT MAP (CLK => CLK, reset => reset, ADDR => ALU_out_MEM, Din => BusB_MEM, WE => MemWrite_MEM, RE => MemRead_MEM, Mem_ready => Mem_ready, Dout => Mem_out);
+
+
+
 
 Banco_MEM_WB: Banco_WB PORT MAP ( 	ALU_out_MEM => ALU_out_MEM, ALU_out_WB => ALU_out_WB, Mem_out => Mem_out, MDR => MDR, clk => clk, reset => reset, load => '1', MemtoReg_MEM => MemtoReg_MEM, RegWrite_MEM => RegWrite_MEM, 
 									MemtoReg_WB => MemtoReg_WB, RegWrite_WB => RegWrite_WB, RW_MEM => RW_MEM, RW_WB => RW_WB );

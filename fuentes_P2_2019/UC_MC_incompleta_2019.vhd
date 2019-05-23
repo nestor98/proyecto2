@@ -67,7 +67,7 @@ component counter_2bits is
 end component;		           
 -------------------------------------------------------------------------------------------------
 -- poner en el siguiente type el nombre de vuestros estados
-type state_type is (Inicio, otros_estados); 
+type state_type is (Inicio,esperarDEVSel_R, esperarDEVSel_W,esperarTRDY_R,transPalabras,frame0,esperarTRDY_W); 
 signal state, next_state : state_type; 
 signal last_word: STD_LOGIC; --se activa cuando se está pidiendo la última palabra de un bloque
 signal count_enable: STD_LOGIC; -- se activa si se ha recibido una palabra de un bloque para que se incremente el contador de palabras
@@ -124,13 +124,14 @@ palabra <= palabra_UC;
 				next_state <= Inicio;
 				ready<='1';
 				MC_RE<='1';
-				mux_origen<='1';
+				mux_origen<='0'; --estaba a 1 y creo que tiene que ser 0
 		elsif (state = Inicio and RE='1' and hit='0') then
 				next_state <= esperarDEVSel_R;
 				Block_addr<='1';
 				Frame<='1';
 				MC_send_addr<='1';
 				MC_bus_Rd_Wr<='0';
+				inc_rm <='1';
 		elsif (state = Inicio and WE='1' and hit='1') then
 				next_state <= esperarDEVSel_W;
 				Frame<='1';
@@ -138,24 +139,26 @@ palabra <= palabra_UC;
 				MC_send_addr<='1';
 				MC_WE<='1';
 				mux_origen<='0';
+				inc_wh <='1';
 		elsif (state = Inicio and WE='1' and hit='0') then
 				next_state <= esperarDEVSel_W;
 				Frame<='1';
 				MC_bus_Rd_Wr<='1';
 				MC_send_addr<='1';
+				inc_wm<= '1';
 		-- LECTURA:		
 		elsif (state = esperarDEVSel_R and Bus_DevSel='0') then
 				next_state <= esperarDEVSel_R;
-				Block_addr='1';
-				Frame='1';
-				MC_send_addr='1';
-				MC_bus_Rd_Wr='0';
+				Block_addr<='1';
+				Frame<='1';
+				MC_send_addr<='1';
+				MC_bus_Rd_Wr<='0';
 		elsif (state = esperarDEVSel_R and Bus_DevSel='1') then
 				next_state <= esperarTRDY_R;	
 				--Block_addr='1'; -- las de direccion se supone que se van
 				--MC_send_addr='1';
-				Frame='1'; 
-				MC_bus_Rd_Wr='0'; -- creo que esta sigue hasta el final
+				Frame<='1'; 
+				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
 		elsif (state = esperarTRDY_R and Bus_TRDY='0') then
 				next_state <= esperarTRDY_R;
 				Frame<='1'; 
@@ -181,7 +184,7 @@ palabra <= palabra_UC;
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
-				Repl_block<='1';
+				Replace_block<='1';
 		-- FRAME A 0:
 		elsif (state = frame0 and RE='1' and hit='1') then
 				next_state <= Inicio;
@@ -193,7 +196,7 @@ palabra <= palabra_UC;
 				next_state <= Inicio;
 				ready <= '1';
 				--Frame<=0; 
-		elsif (state = frame0 and (WE='1' or hit='0'))) then -- si no piden nada no hacemos nada
+		elsif (state = frame0 and (WE='1' or hit='0')) then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
 				ready <= '0';
 				--Frame <=0
