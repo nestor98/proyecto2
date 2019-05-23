@@ -116,7 +116,7 @@ palabra <= palabra_UC;
 		inc_wm <= '0';
 		inc_wh <= '0';
 			
-        -- Estado Inicio          
+        -- Estado INICIO:         
         if (state = Inicio and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
 				ready <= '1';
