@@ -162,7 +162,7 @@ palabra <= palabra_UC;
 		elsif (state = esperarTRDY_R and Bus_TRDY='0') then
 				next_state <= esperarTRDY_R;
 				Frame<='1'; 
-				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
+				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
 		elsif (state = esperarTRDY_R and Bus_TRDY='1') then
 				next_state <= transPalabras;
 				Frame<='1'; 
@@ -170,14 +170,18 @@ palabra <= palabra_UC;
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
-		elsif (state = transPalabras and last_word='0') then
+		elsif (state = transPalabras and Bus_TRDY='0') then
+				next_state <= transPalabras;
+				Frame<='1'; 
+				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
+		elsif (state = transPalabras and Bus_TRDY='1' and last_word='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='1'; -- creo que esta sigue hasta el final	
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
-		elsif (state = transPalabras and last_word='1') then
+		elsif (state = transPalabras and Bus_TRDY='1' and last_word='1') then
 				next_state <= frame0;
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='1'; -- creo que esta sigue hasta el final	
