@@ -95,7 +95,7 @@
       <from>2</from>
       <to>3</to>
       <inputs default="0" any="0" invert="0">last_word=1,Bus_TRDY=1</inputs>
-      <outputs>MC_WE=1,MUX_origen=1,Repl_block=1,ready=0</outputs>
+      <outputs>MC_WE=1,MUX_origen=1,MC_Tag_WE=1,Repl_block=1,ready=0</outputs>
     </transition>
     <transition c1x="1557.512351683462" c2y="644.1318324926762" c1y="655.0967403591424" description="" straight="0" type="2" ypos="741.8957758385619" endx="1274.544134757274" xpos="1294.170416780284" endy="715.0997593620112" c2x="1441.583732841336">
       <from>2</from>

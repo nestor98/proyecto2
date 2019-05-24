@@ -183,6 +183,14 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity reg32
 -- Compiling architecture Behavioral of reg32
 
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity UC_MC
+-- Compiling architecture Behavioral of UC_MC
+
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/adder32.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/adder32.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
