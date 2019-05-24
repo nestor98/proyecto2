@@ -188,6 +188,7 @@ palabra <= palabra_UC;
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
+				MC_tags_WE<='1';
 				Replace_block<='1';
 		-- FRAME A 0:
 		elsif (state = frame0 and RE='1' and hit='1') then
