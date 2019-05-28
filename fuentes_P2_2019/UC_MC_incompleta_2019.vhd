@@ -67,7 +67,7 @@ component counter_2bits is
 end component;		           
 -------------------------------------------------------------------------------------------------
 -- poner en el siguiente type el nombre de vuestros estados
-type state_type is (Inicio,esperarDEVSel_R, esperarDEVSel_W,esperarTRDY_R,transPalabras,frame0,esperarTRDY_W); 
+type state_type is (Inicio,esperarDEVSel_R, esperarDEVSel_W,transPalabras,frame0,esperarTRDY_W); 
 signal state, next_state : state_type; 
 signal last_word: STD_LOGIC; --se activa cuando se está pidiendo la última palabra de un bloque
 signal count_enable: STD_LOGIC; -- se activa si se ha recibido una palabra de un bloque para que se incremente el contador de palabras
@@ -154,22 +154,11 @@ palabra <= palabra_UC;
 				MC_send_addr<='1';
 				MC_bus_Rd_Wr<='0';
 		elsif (state = esperarDEVSel_R and Bus_DevSel='1') then
-				next_state <= esperarTRDY_R;	
+				next_state <= transPalabras;	
 				--Block_addr='1'; -- las de direccion se supone que se van
 				--MC_send_addr='1';
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-		elsif (state = esperarTRDY_R and Bus_TRDY='0') then
-				next_state <= esperarTRDY_R;
-				Frame<='1'; 
-				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-		elsif (state = esperarTRDY_R and Bus_TRDY='1') then
-				next_state <= transPalabras;
-				Frame<='1'; 
-				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
-				MC_WE<='1';
-				mux_origen<='1';
-				count_enable<='1';
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
