@@ -62,6 +62,7 @@ component UC_MC is
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
+			mux_out: out STD_LOGIC; -- Nueva para la parte optativa 2, sera 1 sii se debe mandar el dato del Bus directamente al CPU
             ready : out  STD_LOGIC; -- indica si podemos procesar la orden actual del MIPS en este ciclo. En caso contrario habrá que detener el MIPs
             block_addr : out  STD_LOGIC; -- indica si la dirección a enviar es la de bloque (rm) o la de palabra (w)
 			MC_send_addr : out  STD_LOGIC; --ordena que se envíen la dirección y las señales de control al bus
@@ -108,6 +109,7 @@ signal MC_Din, MC_Dout: std_logic_vector (31 downto 0);
 signal MC_Tags_Dout: std_logic_vector(25 downto 0); 
 signal rm, wm, wh: std_logic_vector(7 downto 0); 
 signal inc_rm, inc_wm, inc_wh : std_logic;
+signal mux_out : std_logic; -- Nueva señal para optativo2
 begin
  -------------------------------------------------------------------------------------------------- 
  -----MC_data: memoria RAM que almacena los 4 bloques de 4 datos que puede guardar la Cache
@@ -128,7 +130,15 @@ begin
             end if;
         end if;
     end process;
-    MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1') else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
+	
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------- CAMBIO OPTATIVO 2: ADELANTO ENVIO --------------------------------------------------------------------------------	
+    -- Linea antigua: MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1') else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
+	-- Añadimos un mux a la salida, que permita mandar a la CPU directamente el bus en funcion de una nueva señal mux_out originada en la UC_MC:
+	MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1' and mux_out='0') else MC_Bus_Din when mux_out='1' else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
 -------------------------------------------------------------------------------------------------- 
 -----MC_Tags: memoria RAM que almacena las 4 etiquetas
 -------------------------------------------------------------------------------------------------- 
@@ -170,7 +180,7 @@ hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0';
 -------------------------------------------------------------------------------------------------- 
 Unidad_Control: UC_MC port map (	clk => clk, reset=> reset, RE => RE, WE => WE, hit => hit, bus_TRDY => bus_TRDY, 
 									bus_DevSel => bus_DevSel, MC_RE => MC_RE, MC_WE => MC_WE, Replace_block => Replace_block, MC_bus_Rd_Wr => internal_MC_bus_Rd_Wr, 
-									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, mux_origen => mux_origen, ready => ready, MC_send_addr=> MC_send_addr, 
+									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, mux_origen => mux_origen, mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
 									block_addr => block_addr, MC_send_data => MC_send_data, Frame => MC_Frame,
 									inc_rm => inc_rm, inc_wm => inc_wm, inc_wh => inc_wh );  
 --------------------------------------------------------------------------------------------------
