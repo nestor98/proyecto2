@@ -61,6 +61,7 @@ component UC_MC is
             MC_bus_Rd_Wr : out  STD_LOGIC; --1 para escritura en Memoria y 0 para lectura
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
+			palabraAddr: in STD_LOGIC_VECTOR (1 downto 0); -- Nueva (parte optativa 2) para comprobar que palabra busca la CPU
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
 			mux_out: out STD_LOGIC; -- Nueva para la parte optativa 2, sera 1 sii se debe mandar el dato del Bus directamente al CPU
             ready : out  STD_LOGIC; -- indica si podemos procesar la orden actual del MIPS en este ciclo. En caso contrario habrá que detener el MIPs
@@ -110,6 +111,7 @@ signal MC_Tags_Dout: std_logic_vector(25 downto 0);
 signal rm, wm, wh: std_logic_vector(7 downto 0); 
 signal inc_rm, inc_wm, inc_wh : std_logic;
 signal mux_out : std_logic; -- Nueva señal para optativo2
+signal palabraAddr : std_logic_vector (1 downto 0);-- Nueva señal para optativo2
 begin
  -------------------------------------------------------------------------------------------------- 
  -----MC_data: memoria RAM que almacena los 4 bloques de 4 datos que puede guardar la Cache
@@ -175,12 +177,16 @@ valid_bit <= 	valid_bits_out(0) when dir_cjto="00" else
 hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0'; --comparador que compara el tag almacenado en MC con el de la dirección y si es el mismo y el bloque tiene el bit de válido activo devuelve un 1
 -------------------------------------------------------------------------------------------------- 
 
+------------------------------------- Nuevo ------------------------------------------------------
+palabraAddr <= ADDR(3 downto 2); -- Nuevo optativo 2: la UC necesita tener la direccion de la palabra 
+--------------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------------- 
 -----MC_UC: unidad de control
 -------------------------------------------------------------------------------------------------- 
 Unidad_Control: UC_MC port map (	clk => clk, reset=> reset, RE => RE, WE => WE, hit => hit, bus_TRDY => bus_TRDY, 
 									bus_DevSel => bus_DevSel, MC_RE => MC_RE, MC_WE => MC_WE, Replace_block => Replace_block, MC_bus_Rd_Wr => internal_MC_bus_Rd_Wr, 
-									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, mux_origen => mux_origen, mux_out => mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
+									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, palabraAddr => palabraAddr, mux_origen => mux_origen, mux_out => mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
 									block_addr => block_addr, MC_send_data => MC_send_data, Frame => MC_Frame,
 									inc_rm => inc_rm, inc_wm => inc_wm, inc_wh => inc_wh );  
 --------------------------------------------------------------------------------------------------
