@@ -96,7 +96,7 @@ palabra <= palabra_UC;
       end if;
    end process;
  
- palabra_buscada <= '1' when palabra=palabraAddr; -- nuevo
+ palabra_buscada <= '1' when palabra_UC=palabraAddr else '0'; -- nuevo
 
    -- Poned aquí el código de vuestra máquina de estados
    OUTPUT_DECODE: process (state, hit, last_word, bus_TRDY, RE, WE, Bus_DevSel, palabra_buscada)

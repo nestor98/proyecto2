@@ -180,7 +180,7 @@ hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0';
 -------------------------------------------------------------------------------------------------- 
 Unidad_Control: UC_MC port map (	clk => clk, reset=> reset, RE => RE, WE => WE, hit => hit, bus_TRDY => bus_TRDY, 
 									bus_DevSel => bus_DevSel, MC_RE => MC_RE, MC_WE => MC_WE, Replace_block => Replace_block, MC_bus_Rd_Wr => internal_MC_bus_Rd_Wr, 
-									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, mux_origen => mux_origen, mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
+									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, mux_origen => mux_origen, mux_out => mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
 									block_addr => block_addr, MC_send_data => MC_send_data, Frame => MC_Frame,
 									inc_rm => inc_rm, inc_wm => inc_wm, inc_wh => inc_wh );  
 --------------------------------------------------------------------------------------------------

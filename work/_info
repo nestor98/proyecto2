@@ -466,26 +466,26 @@ R68
 R14
 R15
 Emc_datos
-R54
+Z69 w1559130487
 R2
 R4
 R3
 R5
 R6
 R0
-Z69 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd
-Z70 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd
+Z70 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd
+Z71 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd
 l0
 L26
 V?GV133<f>_B2eVnhGWCA?3
 !s100 D2Tbm[bze?PNQDfa3jKIa2
 R9
 32
-R66
+Z72 !s110 1559130492
 !i10b 1
-Z71 !s108 1558651666.000000
-Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd|
-Z73 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd|
+Z73 !s108 1559130492.000000
+Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd|
+Z75 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd|
 !i113 1
 R14
 R15
@@ -495,18 +495,18 @@ R4
 R3
 R5
 R6
-DEx4 work 8 mc_datos 0 22 ?GV133<f>_B2eVnhGWCA?3
-l111
+Z76 DEx4 work 8 mc_datos 0 22 ?GV133<f>_B2eVnhGWCA?3
+l113
 L49
-VZ57^V`_YL?aNHTia3LD3H2
-!s100 `I5ccibo80:;88`NohbKT3
+V;XEe8LLUFY?7I<9oeGYgJ1
+!s100 e6O>4Y[=Aidh<b0^zd`kL0
 R9
 32
-R66
-!i10b 1
-R71
 R72
+!i10b 1
 R73
+R74
+R75
 !i113 1
 R14
 R15
@@ -517,8 +517,8 @@ R4
 R5
 R6
 R0
-Z74 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd
-Z75 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd
+Z77 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd
+Z78 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd
 l0
 L25
 Vm[_FfUY:@KJ@LSn4<cM9K2
@@ -527,9 +527,9 @@ R9
 32
 R66
 !i10b 1
-R71
-Z76 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd|
-Z77 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd|
+Z79 !s108 1558651666.000000
+Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd|
+Z81 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_cont.vhd|
 !i113 1
 R14
 R15
@@ -547,9 +547,9 @@ R9
 32
 R66
 !i10b 1
-R71
-R76
-R77
+R79
+R80
+R81
 !i113 1
 R14
 R15
@@ -561,8 +561,8 @@ R2
 R5
 R6
 R0
-Z78 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd
-Z79 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd
+Z82 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd
+Z83 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd
 l0
 L21
 VZIVD_aR1bg?2NI_^FLRnP1
@@ -571,9 +571,9 @@ R9
 32
 R66
 !i10b 1
-R71
-Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd|
-Z81 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd|
+R79
+Z84 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd|
+Z85 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd|
 !i113 1
 R14
 R15
@@ -592,21 +592,21 @@ R9
 32
 R66
 !i10b 1
-R71
-R80
-R81
+R79
+R84
+R85
 !i113 1
 R14
 R15
 Ememoriaram_d
-Z82 w1557439563
+Z86 w1557439563
 R4
 R3
 R5
 R6
 R0
-Z83 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd
-Z84 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd
+Z87 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd
+Z88 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd
 l0
 L33
 VfFlDKazVPSkzX<390lJZJ0
@@ -615,9 +615,9 @@ R9
 32
 R66
 !i10b 1
-R71
-Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd|
-Z86 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd|
+R79
+Z89 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd|
+Z90 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd|
 !i113 1
 R14
 R15
@@ -635,32 +635,32 @@ R9
 32
 R66
 !i10b 1
-R71
-R85
-R86
+R79
+R89
+R90
 !i113 1
 R14
 R15
 Ememoriaram_i
-Z87 w1557441297
+Z91 w1559067437
 R4
 R3
 R5
 R6
 R0
-Z88 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd
-Z89 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd
+Z92 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd
+Z93 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd
 l0
 L32
 VYbZkhW9WoEbhnN`5@J6=`0
 !s100 Q@4V61X_V]:iAW=8FaYo:2
 R9
 32
-R66
+Z94 !s110 1559130209
 !i10b 1
-R71
-Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd|
-Z91 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd|
+Z95 !s108 1559130209.000000
+Z96 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd|
+Z97 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_I_ejemplo_nops.vhd|
 !i113 1
 R14
 R15
@@ -672,36 +672,36 @@ R6
 DEx4 work 12 memoriaram_i 0 22 YbZkhW9WoEbhnN`5@J6=`0
 l73
 L54
-VYJDadVlXA<_S6Ll]K@YLQ3
-!s100 ]zA7cC95Hm0Qz>FkX<>282
+V]0W6N9lD8nZeAZ4TQLLiQ0
+!s100 @Ehm6_?7`P?JlSj3F59;@3
 R9
 32
-R66
+R94
 !i10b 1
-R71
-R90
-R91
+R95
+R96
+R97
 !i113 1
 R14
 R15
 Emips_segmentado
-Z92 w1558645576
+Z98 w1559129974
 R5
 R6
 R0
-Z93 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd
-Z94 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd
+Z99 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd
+Z100 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd
 l0
 L17
 Ve<S3UnMGALX==76So=gmA3
 !s100 DJcDbJgiN<BoEZ@019[2E2
 R9
 32
-R66
+R94
 !i10b 1
-R71
-Z95 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd|
-Z96 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd|
+R95
+Z101 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd|
+Z102 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd|
 !i113 1
 R14
 R15
@@ -711,25 +711,25 @@ R6
 DEx4 work 15 mips_segmentado 0 22 e<S3UnMGALX==76So=gmA3
 l280
 L23
-V_3F5C3AGK7B5507`dE8gm2
-!s100 m=STe?YOREbDNNHB=2iK20
+VYTRZK3VX`f;OEh_Piifh61
+!s100 zSE@@^>Tn96zka3[:3Wdh1
 R9
 32
-R66
+R94
 !i10b 1
-R71
 R95
-R96
+R101
+R102
 !i113 1
 R14
 R15
 Emux2_1
-Z97 w1397310294
+Z103 w1397310294
 R5
 R6
 R0
-Z98 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd
-Z99 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd
+Z104 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd
+Z105 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd
 l0
 L32
 V3ffz>_Pd`0UGm<RQ39N2<1
@@ -738,9 +738,9 @@ R9
 32
 R66
 !i10b 1
-R71
-Z100 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd|
-Z101 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd|
+R79
+Z106 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd|
+Z107 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_1.vhd|
 !i113 1
 R14
 R15
@@ -756,19 +756,19 @@ R9
 32
 R66
 !i10b 1
-R71
-R100
-R101
+R79
+R106
+R107
 !i113 1
 R14
 R15
 Emux2_5bits
-Z102 w1397310028
+Z108 w1397310028
 R5
 R6
 R0
-Z103 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd
-Z104 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd
+Z109 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd
+Z110 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd
 l0
 L32
 VhCRR<1Cbl2c7k1]J0>8dM2
@@ -777,9 +777,9 @@ R9
 32
 R66
 !i10b 1
-R71
-Z105 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd|
-Z106 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd|
+R79
+Z111 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd|
+Z112 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd|
 !i113 1
 R14
 R15
@@ -795,19 +795,19 @@ R9
 32
 R66
 !i10b 1
-R71
-R105
-R106
+R79
+R111
+R112
 !i113 1
 R14
 R15
 Emux4_1
-Z107 w1457725414
+Z113 w1457725414
 R5
 R6
 R0
-Z108 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd
-Z109 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd
+Z114 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd
+Z115 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd
 l0
 L32
 V9@bHkReO;BnoSl;<HR[bi3
@@ -816,9 +816,9 @@ R9
 32
 R45
 !i10b 1
-R71
-Z110 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd|
-Z111 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd|
+R79
+Z116 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd|
+Z117 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1.vhd|
 !i113 1
 R14
 R15
@@ -834,19 +834,19 @@ R9
 32
 R45
 !i10b 1
-R71
-R110
-R111
+R79
+R116
+R117
 !i113 1
 R14
 R15
 Emux4_1_32bits
-Z112 w1520954314
+Z118 w1520954314
 R5
 R6
 R0
-Z113 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd
-Z114 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd
+Z119 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd
+Z120 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd
 l0
 L4
 V6d^O7`FCgJG1BW>[2WP>10
@@ -856,8 +856,8 @@ R9
 R45
 !i10b 1
 R46
-Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd|
-Z116 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd|
+Z121 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd|
+Z122 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux4_1_32bits.vhd|
 !i113 1
 R14
 R15
@@ -874,8 +874,8 @@ R9
 R45
 !i10b 1
 R46
-R115
-R116
+R121
+R122
 !i113 1
 R14
 R15
@@ -887,8 +887,8 @@ R3
 R5
 R6
 R0
-Z117 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd
-Z118 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd
+Z123 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd
+Z124 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd
 l0
 L34
 V:NFlRm0CJJooOe=[HS1cY1
@@ -897,9 +897,9 @@ R9
 32
 R66
 !i10b 1
-R71
-Z119 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd|
-Z120 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd|
+R79
+Z125 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd|
+Z126 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd|
 !i113 1
 R14
 R15
@@ -918,19 +918,19 @@ R9
 32
 R66
 !i10b 1
-R71
-R119
-R120
+R79
+R125
+R126
 !i113 1
 R14
 R15
 Ereg32
-Z121 w1397310034
+Z127 w1397310034
 R5
 R6
 R0
-Z122 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd
-Z123 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd
+Z128 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd
+Z129 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd
 l0
 L32
 Vcf]H1V:29^h=K6L<M069Z0
@@ -940,8 +940,8 @@ R9
 R45
 !i10b 1
 R46
-Z124 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd|
-Z125 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd|
+Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd|
+Z131 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd|
 !i113 1
 R14
 R15
@@ -958,8 +958,8 @@ R9
 R45
 !i10b 1
 R46
-R124
-R125
+R130
+R131
 !i113 1
 R14
 R15
@@ -968,8 +968,8 @@ R54
 R5
 R6
 R0
-Z126 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
-Z127 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
+Z132 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
+Z133 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
 l0
 L32
 V3hDbhV_A7bzg1>4N9Qz@00
@@ -979,8 +979,8 @@ R9
 R45
 !i10b 1
 R46
-Z128 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd|
-Z129 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd|
+Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd|
+Z135 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd|
 !i113 1
 R14
 R15
@@ -997,8 +997,8 @@ R9
 R45
 !i10b 1
 R46
-R128
-R129
+R134
+R135
 !i113 1
 R14
 R15
@@ -1007,8 +1007,8 @@ R54
 R5
 R6
 R0
-Z130 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd
-Z131 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd
+Z136 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd
+Z137 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd
 l0
 L32
 VY76]M0SAIP1ABKT=KKW1>1
@@ -1018,8 +1018,8 @@ R9
 R45
 !i10b 1
 R46
-Z132 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd|
-Z133 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd|
+Z138 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd|
+Z139 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg7.vhd|
 !i113 1
 R14
 R15
@@ -1036,8 +1036,8 @@ R9
 R45
 !i10b 1
 R46
-R132
-R133
+R138
+R139
 !i113 1
 R14
 R15
@@ -1046,8 +1046,8 @@ R54
 R5
 R6
 R0
-Z134 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd
-Z135 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd
+Z140 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd
+Z141 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd
 l0
 L35
 Vl`eKiS1X;JG:9WglTT<@V2
@@ -1057,8 +1057,8 @@ R9
 R45
 !i10b 1
 R46
-Z136 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd|
-Z137 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd|
+Z142 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd|
+Z143 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Testbench_MD.vhd|
 !i113 1
 R14
 R15
@@ -1075,19 +1075,19 @@ R9
 R45
 !i10b 1
 R46
-R136
-R137
+R142
+R143
 !i113 1
 R14
 R15
 Etestbench
-Z138 w1520888234
+Z144 w1520888234
 R2
 R5
 R6
 R0
-Z139 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd
-Z140 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd
+Z145 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd
+Z146 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd
 l0
 L7
 V?RXCn9@FP9m8X1o_bn1`P3
@@ -1097,8 +1097,8 @@ R9
 R45
 !i10b 1
 R46
-Z141 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd|
-Z142 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd|
+Z147 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd|
+Z148 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd|
 !i113 1
 R14
 R15
@@ -1116,21 +1116,21 @@ R9
 R45
 !i10b 1
 R46
-R141
-R142
+R147
+R148
 !i113 1
 R14
 R15
 Etestbench_md_mas_mc
-Z143 w1558039244
+Z149 w1558039244
 R3
 R4
 R2
 R5
 R6
 R0
-Z144 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd
-Z145 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd
+Z150 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd
+Z151 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd
 l0
 L10
 Vf>eozkj:AQlP>_Ch0<acj0
@@ -1140,8 +1140,8 @@ R9
 R45
 !i10b 1
 R46
-Z146 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd|
-Z147 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd|
+Z152 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd|
+Z153 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_MD_mas_MC_alumnos.vhd|
 !i113 1
 R14
 R15
@@ -1161,18 +1161,18 @@ R9
 R45
 !i10b 1
 R46
-R146
-R147
+R152
+R153
 !i113 1
 R14
 R15
 Etwo_bits_shifter
-Z148 w1397310000
+Z154 w1397310000
 R5
 R6
 R0
-Z149 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd
-Z150 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd
+Z155 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd
+Z156 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd
 l0
 L32
 V>``KTYRlmPk@4izOeR>SC2
@@ -1182,8 +1182,8 @@ R9
 R19
 !i10b 1
 R25
-Z151 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd|
-Z152 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd|
+Z157 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd|
+Z158 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd|
 !i113 1
 R14
 R15
@@ -1200,18 +1200,18 @@ R9
 R19
 !i10b 1
 R25
-R151
-R152
+R157
+R158
 !i113 1
 R14
 R15
 Eua
-Z153 w1556292639
+Z159 w1556292639
 R5
 R6
 R0
-Z154 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd
-Z155 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd
+Z160 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd
+Z161 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd
 l0
 L14
 VV_z4L`O58ZG;X[69LGL4d2
@@ -1221,8 +1221,8 @@ R9
 R45
 !i10b 1
 R46
-Z156 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd|
-Z157 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd|
+Z162 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd|
+Z163 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd|
 !i113 1
 R14
 R15
@@ -1239,18 +1239,18 @@ R9
 R45
 !i10b 1
 R46
-R156
-R157
+R162
+R163
 !i113 1
 R14
 R15
 Euc
-Z158 w1556378957
+Z164 w1556378957
 R5
 R6
 R0
-Z159 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd
-Z160 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd
+Z165 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd
+Z166 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd
 l0
 L32
 V37]T75KVb]j_EAgASYOUM2
@@ -1260,8 +1260,8 @@ R9
 R10
 !i10b 1
 R11
-Z161 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd|
-Z162 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd|
+Z167 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd|
+Z168 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_Mips.vhd|
 !i113 1
 R14
 R15
@@ -1278,47 +1278,47 @@ R9
 R10
 !i10b 1
 R11
-R161
-R162
+R167
+R168
 !i113 1
 R14
 R15
 Euc_mc
-Z163 w1558694776
+Z169 w1559130441
 R5
 R6
 R0
-Z164 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
-Z165 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
+Z170 8D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
+Z171 FD:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
 l0
 L32
-VFJ5mmc^TNfeIWkKjc@_J`2
-!s100 ;zn?V_ZWKoZgagdd`ML[02
+VHA8KnST5;`<bc>9W1<DeG0
+!s100 ;@]LO8ioSd4m5UkamJYj21
 R9
 32
-Z166 !s110 1558694782
+Z172 !s110 1559130449
 !i10b 1
-Z167 !s108 1558694782.000000
-Z168 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd|
-Z169 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd|
+Z173 !s108 1559130449.000000
+Z174 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd|
+Z175 !s107 D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd|
 !i113 1
 R14
 R15
 Abehavioral
 R5
 R6
-Z170 DEx4 work 5 uc_mc 0 22 FJ5mmc^TNfeIWkKjc@_J`2
-l75
-L58
-V56?XHVP9@<j8NmoL1Bj>o2
-!s100 V21eT5AE533iQJ=g;<_oA2
+DEx4 work 5 uc_mc 0 22 HA8KnST5;`<bc>9W1<DeG0
+l78
+L60
+V]c9_L?_Cn^Md7TeoLjYXL3
+!s100 3khTfLCbf>[?GlTgSMS<30
 R9
 32
-R166
+R172
 !i10b 1
-R167
-R168
-R169
+R173
+R174
+R175
 !i113 1
 R14
 R15
