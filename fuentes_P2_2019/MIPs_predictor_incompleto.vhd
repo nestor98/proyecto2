@@ -287,7 +287,7 @@ cont_mem_reads: counter port map (clk => clk, reset => reset, count_enable => in
 cont_mem_writes: counter port map (clk => clk, reset => reset, count_enable => inc_mem_writes , load=> '0', D_in => "00000000", count => mem_writes);
 
 inc_paradas_control <= '1' when(predictor_error='1') else '0';
-inc_paradas_datos  <= '1' when(riesgo_lw_uso = '1' or riesgo_beq = '1') else '0';
+inc_paradas_datos  <= '1' when(Mem_ready='1' and (riesgo_lw_uso = '1' or riesgo_beq = '1')) else '0';-- (and Mem_ready='1') para no contar ciclos de parada mem (tal como estabs se quedan conjelados y contaba de mas)
 inc_paradas_memoria <= '1' when(Mem_ready = '0') else '0';
 inc_mem_reads <= '1' when(IR_ID(31 downto 26)= "000010") else '0';
 inc_mem_writes <= '1' when(IR_ID(31 downto 26)= "000011") else '0';
