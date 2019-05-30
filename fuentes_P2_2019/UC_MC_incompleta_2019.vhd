@@ -228,9 +228,9 @@ palabra <= palabra_UC;
 				Frame<='1';
 				if (last_word='0') then
 					next_state <= terminarTrans;
-					
 				else
 					next_state <= frame0;
+					MC_tags_WE<='1';
 					Replace_block <= '1';
 				end if;
 		-- FRAME A 0:
