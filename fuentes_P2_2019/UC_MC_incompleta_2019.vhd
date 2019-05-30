@@ -100,6 +100,7 @@ palabra <= palabra_UC;
  
  palabra_buscada <= '1' when palabra_UC=palabraAddr else '0'; -- nuevo
 
+ 
    -- Poned aquí el código de vuestra máquina de estados
    OUTPUT_DECODE: process (state, hit, last_word, bus_TRDY, RE, WE, Bus_DevSel, palabra_buscada)
    begin
@@ -122,7 +123,7 @@ palabra <= palabra_UC;
 		inc_rm <= '0';
 		inc_wm <= '0';
 		inc_wh <= '0';
-		
+			
         -- Estado INICIO:         
         if (state = Inicio and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
@@ -133,14 +134,22 @@ palabra <= palabra_UC;
 				MC_RE<='1';
 				mux_origen<='0'; --estaba a 1 y creo que tiene que ser 0
 		elsif (state = Inicio and RE='1' and hit='0') then
-				next_state <= esperarDEVSel_R;
+				if (Bus_DevSel='0') then
+					next_state <= esperarDEVSel_R;
+				else
+					next_state <= transPalabras;
+				end if;
 				Block_addr<='1';
 				Frame<='1';
 				MC_send_addr<='1';
 				MC_bus_Rd_Wr<='0';
 				inc_rm <='1';
 		elsif (state = Inicio and WE='1' and hit='1') then
-				next_state <= esperarDEVSel_W;
+				if (Bus_DevSel='0') then
+					next_state <= esperarDEVSel_W;
+				else
+					next_state <= esperarTRDY_W;
+				end if;
 				Frame<='1';
 				MC_bus_Rd_Wr<='1';
 				MC_send_addr<='1';
@@ -148,7 +157,11 @@ palabra <= palabra_UC;
 				mux_origen<='0';
 				inc_wh <='1';
 		elsif (state = Inicio and WE='1' and hit='0') then
-				next_state <= esperarDEVSel_W;
+				if (Bus_DevSel='0') then
+					next_state <= esperarDEVSel_W;
+				else
+					next_state <= esperarTRDY_W;
+				end if;
 				Frame<='1';
 				MC_bus_Rd_Wr<='1';
 				MC_send_addr<='1';
@@ -166,8 +179,6 @@ palabra <= palabra_UC;
 				--MC_send_addr='1';
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-				--- aqui se actualizara reg_set_ini, algo como:
-				-- reg_set_ini_en <= '1'
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
@@ -193,7 +204,7 @@ palabra <= palabra_UC;
 				next_state <= Inicio;
 				ready<='1';
 				MC_RE<='1';
-				--mux_origen<='0';
+				mux_origen<='0';
 				--Frame<='0'; -- lo hace por defecto
 		elsif (state = frame0 and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
@@ -223,6 +234,9 @@ palabra <= palabra_UC;
 				Frame<='1';
 				ready<='1';
 				MC_send_data <= '1';
+   	-- Poner aquí las condiciones de vuestra máquina de estado
+	--  elsif() then
+   	--  else
 		
 		end if;
    end process;

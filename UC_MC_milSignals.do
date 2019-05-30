@@ -30,8 +30,8 @@ add wave -noupdate -expand -group MC_mas_MD /testbench_md_mas_mc/uut/WE
 add wave -noupdate -expand -group MC_mas_MD /testbench_md_mas_mc/uut/Din
 add wave -noupdate -expand -group MC_mas_MD /testbench_md_mas_mc/uut/ADDR
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {145 ns} 0} {{Cursor 2} {21 ns} 0} {{Cursor 3} {155 ns} 0} {{Cursor 4} {235 ns} 0} {{Cursor 5} {315 ns} 0} {{Cursor 6} {455 ns} 0}
-quietly wave cursor active 6
+WaveRestoreCursors {{Cursor 1} {20 ns} 0} {{Cursor 2} {145 ns} 0} {{Cursor 3} {155 ns} 0} {{Cursor 4} {235 ns} 0} {{Cursor 5} {315 ns} 0} {{Cursor 6} {455 ns} 0}
+quietly wave cursor active 1
 configure wave -namecolwidth 345
 configure wave -valuecolwidth 101
 configure wave -justifyvalue left

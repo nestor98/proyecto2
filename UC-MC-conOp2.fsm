@@ -115,7 +115,7 @@
       <inputs default="0" any="0" invert="0">last_word=1,Bus_TRDY=1</inputs>
       <outputs>MC_WE=1,MUX_origen=1,MC_Tag_WE=1,Repl_block=1</outputs>
     </transition>
-    <transition c1x="1278.85468278032" c2y="636.1653680206327" c1y="660.8635800402529" description="" straight="0" type="2" ypos="706.3508893593265" endx="1634.061585871784" xpos="1192.947331922021" endy="647.781199215099" c2x="1512.227322264685">
+    <transition c1x="1278.85468278032" c2y="621.1653680206327" c1y="660.8635800402529" description="" straight="0" type="2" ypos="706.3508893593265" endx="1634.061585871784" xpos="1192.947331922021" endy="647.781199215099" c2x="1478.227322264685">
       <from>2</from>
       <to>1</to>
       <inputs default="0" any="0" invert="0">Bus_TRDY=1,buscada=0</inputs>
