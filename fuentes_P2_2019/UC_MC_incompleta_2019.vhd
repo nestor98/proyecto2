@@ -70,7 +70,7 @@ component counter_2bits is
 end component;
 -------------------------------------------------------------------------------------------------
 -- poner en el siguiente type el nombre de vuestros estados
-type state_type is (Inicio,esperarDEVSel_R, esperarDEVSel_W,transPalabras,frame0,esperarTRDY_W); 
+type state_type is (Inicio,esperarDEVSel_R, esperarDEVSel_W,transPalabras,terminarTrans,frame0,esperarTRDY_W); 
 signal state, next_state : state_type; 
 signal last_word: STD_LOGIC; --se activa cuando se está pidiendo la última palabra de un bloque
 signal count_enable: STD_LOGIC; -- se activa si se ha recibido una palabra de un bloque para que se incremente el contador de palabras
@@ -179,26 +179,60 @@ palabra <= palabra_UC;
 				--MC_send_addr='1';
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
+				reg_set_ini_en <= '1'; -- para guardar el set del principio (optativo 2)
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
 				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-		elsif (state = transPalabras and Bus_TRDY='1' and last_word='0') then
+		elsif (state = transPalabras and Bus_TRDY='1' and palabra_buscada='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
-				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
+				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
 		elsif (state = transPalabras and Bus_TRDY='1' and last_word='1') then
 				next_state <= frame0;
 				Frame<='1'; 
-				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
+				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
 				MC_tags_WE<='1';
 				Replace_block<='1';
+		elsif (state = transPalabras and Bus_TRDY='1' and palabra_buscada='1') then
+				next_state <= terminarTrans;
+				Frame<='1'; 
+				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
+				MC_WE<='1';
+				mux_origen<='1';
+				count_enable<='1';
+				ready<='1';
+		-- TERMINAR TRANSMISION (PALABRA YA ENVIADA)
+		elsif (state = terminarTrans and Bus_TRDY='0') then
+				next_state <= terminarTrans;
+				Frame<='1'; 
+				if (RE='0' and WE='0') then
+					ready<='1';
+				elsif (RE='1' and hit='1') then
+					MC_RE<='1';
+					ready<='1';
+				-- en cualquier otro caso, ready=0
+				end if;
+				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
+		elsif (state = terminarTrans and Bus_TRDY='1') then
+				-- ready <= '0'
+				MC_WE <= '1';
+				mux_origen <= '1';
+				count_enable <= '1';
+				Frame<='1';
+				if (last_word='0') then
+					next_state <= terminarTrans;
+					
+				else
+					next_state <= frame0;
+					Replace_block <= '1';
+				end if;
 		-- FRAME A 0:
 		elsif (state = frame0 and RE='1' and hit='1') then
 				next_state <= Inicio;
