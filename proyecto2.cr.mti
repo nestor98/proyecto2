@@ -113,13 +113,13 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity Ext_signo
 -- Compiling architecture Behavioral of Ext_signo
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_MEM.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_MEM.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity UA
--- Compiling architecture Behavioral of UA
+-- Compiling entity Banco_MEM
+-- Compiling architecture Behavioral of Banco_MEM
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/predictor_saltos.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/predictor_saltos.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -129,24 +129,21 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity branch_predictor
 -- Compiling architecture Behavioral of branch_predictor
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_MEM.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_MEM.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UA_incompleta.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity Banco_MEM
--- Compiling architecture Behavioral of Banco_MEM
+-- Compiling entity UA
+-- Compiling architecture Behavioral of UA
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_ID_predictor.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_ID_predictor.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Loading package NUMERIC_STD
--- Compiling entity RAM_128_32
--- Compiling architecture Behavioral of RAM_128_32
+-- Compiling entity Banco_ID
+-- Compiling architecture Behavioral of Banco_ID
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/ALU.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -159,21 +156,16 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity ALU
 -- Compiling architecture Behavioral of ALU
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_ID_predictor.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_ID_predictor.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_datos_enable.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity Banco_ID
--- Compiling architecture Behavioral of Banco_ID
-
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity reg32
--- Compiling architecture Behavioral of reg32
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity RAM_128_32
+-- Compiling architecture Behavioral of RAM_128_32
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/mux2_6bits.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -183,31 +175,13 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity mux2_5bits
 -- Compiling architecture Behavioral of mux2_5bits
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg32.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity MIPs_segmentado
--- Compiling architecture Behavioral of MIPs_segmentado
-
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity UC_MC
--- Compiling architecture Behavioral of UC_MC
-
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity memoriaRAM_D
--- Compiling architecture Behavioral of memoriaRAM_D
+-- Compiling entity reg32
+-- Compiling architecture Behavioral of reg32
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/adder32.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/adder32.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -220,6 +194,24 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity adder32
 -- Compiling architecture Behavioral of adder32
 
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/memoriaRAM_ejemplo.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity memoriaRAM_D
+-- Compiling architecture Behavioral of memoriaRAM_D
+
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MIPs_predictor_incompleto.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity MIPs_segmentado
+-- Compiling architecture Behavioral of MIPs_segmentado
+
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -228,22 +220,15 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity two_bits_shifter
 -- Compiling architecture Behavioral of two_bits_shifter
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg2.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg2.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/BReg.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/BReg.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity reg2
--- Compiling architecture Behavioral of reg2
-
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity testbench
--- Compiling architecture behavior of testbench
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity BReg
+-- Compiling architecture Behavioral of BReg
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MD_mas_MC.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -256,15 +241,30 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity MD_mas_MC
 -- Compiling architecture Behavioral of MD_mas_MC
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/BReg.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/BReg.vhd
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/testbench_Mips.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity BReg
--- Compiling architecture Behavioral of BReg
+-- Loading package NUMERIC_STD
+-- Compiling entity testbench
+-- Compiling architecture behavior of testbench
+
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg2.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg2.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity reg2
+-- Compiling architecture Behavioral of reg2
+
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity reg4
+-- Compiling architecture Behavioral of reg4
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -277,22 +277,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity MC_datos
 -- Compiling architecture Behavioral of MC_datos
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity reg4
--- Compiling architecture Behavioral of reg4
-
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_WB.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_WB.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity Banco_WB
--- Compiling architecture Behavioral of Banco_WB
-
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/counter_2bits.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/counter_2bits.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -303,5 +287,13 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity counter_2bits
 -- Compiling architecture Behavioral of counter_2bits
+
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_WB.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/Banco_WB.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity Banco_WB
+-- Compiling architecture Behavioral of Banco_WB
 
 } {} {}}
