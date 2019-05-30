@@ -42,6 +42,7 @@ entity UC_MC is
             MC_WE : out  STD_LOGIC;
             MC_bus_Rd_Wr : out  STD_LOGIC; --1 para escritura en Memoria y 0 para lectura
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
+			reg_set_ini_en : out STD_LOGIC; -- para actualizar el reg con el set (nuevo optativo 2)
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
 			mux_out: out STD_LOGIC; -- Nueva para la parte optativa 2, sera 1 sii se debe mandar el dato del Bus directamente al CPU
@@ -75,6 +76,7 @@ signal last_word: STD_LOGIC; --se activa cuando se está pidiendo la última palab
 signal count_enable: STD_LOGIC; -- se activa si se ha recibido una palabra de un bloque para que se incremente el contador de palabras
 signal palabra_UC : STD_LOGIC_VECTOR (1 downto 0);
 signal palabra_buscada : STD_LOGIC; -- nueva para calcular mux_out: 1 sii la palabra traida del bus es la buscada
+--signal reg_set_ini_en : STD_LOGIC; -- nueva para actualizar el tag (optativa 2)
 begin
 
 
@@ -120,7 +122,7 @@ palabra <= palabra_UC;
 		inc_rm <= '0';
 		inc_wm <= '0';
 		inc_wh <= '0';
-			
+		
         -- Estado INICIO:         
         if (state = Inicio and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
@@ -164,6 +166,8 @@ palabra <= palabra_UC;
 				--MC_send_addr='1';
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
+				--- aqui se actualizara reg_set_ini, algo como:
+				-- reg_set_ini_en <= '1'
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
@@ -189,7 +193,7 @@ palabra <= palabra_UC;
 				next_state <= Inicio;
 				ready<='1';
 				MC_RE<='1';
-				mux_origen<='1';
+				--mux_origen<='0';
 				--Frame<='0'; -- lo hace por defecto
 		elsif (state = frame0 and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
@@ -219,9 +223,6 @@ palabra <= palabra_UC;
 				Frame<='1';
 				ready<='1';
 				MC_send_data <= '1';
-   	-- Poner aquí las condiciones de vuestra máquina de estado
-	--  elsif() then
-   	--  else
 		
 		end if;
    end process;

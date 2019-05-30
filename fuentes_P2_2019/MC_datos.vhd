@@ -60,6 +60,7 @@ component UC_MC is
             MC_WE : out  STD_LOGIC;
             MC_bus_Rd_Wr : out  STD_LOGIC; --1 para escritura en Memoria y 0 para lectura
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
+			reg_set_ini_en : out STD_LOGIC; -- para actualizar el reg con el set (nuevo optativo 2)
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
 			palabraAddr: in STD_LOGIC_VECTOR (1 downto 0); -- Nueva (parte optativa 2) para comprobar que palabra busca la CPU
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
@@ -83,6 +84,16 @@ component reg4 is
             load : in  STD_LOGIC;
             Dout :out  STD_LOGIC_VECTOR (3 downto 0));
 end component;		
+
+-- Nuevo parte optativa 2 (para reg_set_ini)
+component reg2 is
+    Port (  Din : in  STD_LOGIC_VECTOR (1 downto 0);
+            clk : in  STD_LOGIC;
+			reset : in  STD_LOGIC;
+            load : in  STD_LOGIC;
+            Dout :out  STD_LOGIC_VECTOR (1 downto 0));
+end component;	
+
 
 component counter is
     Port ( clk : in  STD_LOGIC;
@@ -112,6 +123,8 @@ signal rm, wm, wh: std_logic_vector(7 downto 0);
 signal inc_rm, inc_wm, inc_wh : std_logic;
 signal mux_out : std_logic; -- Nueva señal para optativo2
 signal palabraAddr : std_logic_vector (1 downto 0);-- Nueva señal para optativo2
+signal reg_set_ini_en : std_logic; -- para actualizar el reg con el set (nuevo optativo 2)
+signal reg_set_out : std_logic_vector (1 downto 0); -- salida del registro reg_set
 begin
  -------------------------------------------------------------------------------------------------- 
  -----MC_data: memoria RAM que almacena los 4 bloques de 4 datos que puede guardar la Cache
@@ -144,37 +157,47 @@ begin
 -------------------------------------------------------------------------------------------------- 
 -----MC_Tags: memoria RAM que almacena las 4 etiquetas
 -------------------------------------------------------------------------------------------------- 
+----------------------------------- Nuevo optativa 2 ----------------------------------------------------------------------
+----------------------------------- Registro de 2 b 
+reg_set_ini: reg2 port map(		Din => dir_cjto, clk => clk, reset => reset, load => reg_set_ini_en, Dout => reg_set_out);
+---------------------------------------------------------------------------------------------------------------------------
+-- NOTA CAMBIOS:
+-- A continuacion he cambiado todas las señales dir_cjto por reg_set_out, para que utilice la direccion del conjunto del principio
+-- en caso de entrar en el estado "TerminarTransmision" de la parte optativa 2
+---------------------------------------------------------------------------------------------------------------------------
 memoria_cache_tags: process (CLK)
     begin
         if (CLK'event and CLK = '1') then
             if (MC_Tags_WE = '1') then -- sólo se escribe si MC_Tags_WE vale 1
-                MC_Tags(conv_integer(dir_cjto)) <= ADDR(31 downto 6);
+                MC_Tags(conv_integer(reg_set_out)) <= ADDR(31 downto 6);
 				-- report saca un mensaje en la consola del simulador. Nos imforma sobre qué etiqeta se ha escrito, dónde y cuándo
 				report "Simulation time : " & time'IMAGE(now) & ".  Tag written: " & integer'image(to_integer(unsigned(ADDR(31 downto 6)))) & ", in dir_MC = " & integer'image(to_integer(unsigned(dir_cjto)));
             end if;
         end if;
     end process;
-    MC_Tags_Dout <= MC_Tags(conv_integer(dir_cjto)) when (RE='1' or WE='1') else "00000000000000000000000000"; --sólo se lee si RE_MC vale 1
+    MC_Tags_Dout <= MC_Tags(conv_integer(reg_set_out)) when (RE='1' or WE='1') else "00000000000000000000000000"; --sólo se lee si RE_MC vale 1
 -------------------------------------------------------------------------------------------------- 
 -- registro de validez. Al resetear los bits de validez se ponen a 0 así evitamos falsos positivos por basura en las memorias
 -- en el bit de validez se escribe a la vez que en la memoria de etiquetas. Hay que poner a 1 el bit que toque y mantener los demás, para eso usamos una mascara generada por un decodificador
 -------------------------------------------------------------------------------------------------- 
-mask			<= 	"0001" when dir_cjto="00" else
-						"0010" when dir_cjto="01" else
-						"0100" when dir_cjto="10" else
-						"1000" when dir_cjto="11" else
+mask			<= 	"0001" when reg_set_out="00" else
+						"0010" when reg_set_out="01" else
+						"0100" when reg_set_out="10" else
+						"1000" when reg_set_out="11" else
 						"0000";
 valid_bits_in <= valid_bits_out OR mask;
 bits_validez: reg4 port map(	Din => valid_bits_in, clk => clk, reset => reset, load => MC_tags_WE, Dout => valid_bits_out);
+
 -------------------------------------------------------------------------------------------------- 
-valid_bit <= 	valid_bits_out(0) when dir_cjto="00" else
-						valid_bits_out(1) when dir_cjto="01" else
-						valid_bits_out(2) when dir_cjto="10" else
-						valid_bits_out(3) when dir_cjto="11" else
+valid_bit <= 			valid_bits_out(0) when reg_set_out="00" else
+						valid_bits_out(1) when reg_set_out="01" else
+						valid_bits_out(2) when reg_set_out="10" else
+						valid_bits_out(3) when reg_set_out="11" else
 						'0';
 -------------------------------------------------------------------------------------------------- 
 -- Señal de hit: se activa cuando la etiqueta coincide y el bit de valido es 1
 hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0'; --comparador que compara el tag almacenado en MC con el de la dirección y si es el mismo y el bloque tiene el bit de válido activo devuelve un 1
+--reg_set_ini <= ADDR(5 downto 4) when reg_set_ini_en ='1';
 -------------------------------------------------------------------------------------------------- 
 
 ------------------------------------- Nuevo ------------------------------------------------------
