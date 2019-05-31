@@ -60,7 +60,8 @@ component UC_MC is
             MC_WE : out  STD_LOGIC;
             MC_bus_Rd_Wr : out  STD_LOGIC; --1 para escritura en Memoria y 0 para lectura
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
-			reg_set_ini_en : out STD_LOGIC; -- para actualizar el reg con el set (nuevo optativo 2)
+			reg_ADDR_ini_en : out STD_LOGIC; -- para actualizar el reg con la dir (nuevo optativo 1 y 2)
+			reg_Din_ini_en : out STD_LOGIC; -- para actualizar el reg con el dato entrante de CPU (nuevo optativo 1)
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
 			palabraAddr: in STD_LOGIC_VECTOR (1 downto 0); -- Nueva (parte optativa 2) para comprobar que palabra busca la CPU
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
@@ -86,12 +87,12 @@ component reg4 is
 end component;		
 
 -- Nuevo parte optativa 2 (para reg_set_ini)
-component reg2 is
-    Port (  Din : in  STD_LOGIC_VECTOR (1 downto 0);
+component reg32 is
+    Port (  Din : in  STD_LOGIC_VECTOR (31 downto 0);
             clk : in  STD_LOGIC;
 			reset : in  STD_LOGIC;
             load : in  STD_LOGIC;
-            Dout :out  STD_LOGIC_VECTOR (1 downto 0));
+            Dout :out  STD_LOGIC_VECTOR (31 downto 0));
 end component;	
 
 
@@ -123,15 +124,35 @@ signal rm, wm, wh: std_logic_vector(7 downto 0);
 signal inc_rm, inc_wm, inc_wh : std_logic;
 signal mux_out : std_logic; -- Nueva señal para optativo2
 signal palabraAddr : std_logic_vector (1 downto 0);-- Nueva señal para optativo2
-signal reg_set_ini_en : std_logic; -- para actualizar el reg con el set (nuevo optativo 2)
-signal reg_set_out : std_logic_vector (1 downto 0); -- salida del registro reg_set
+signal reg_ADDR_ini_en : std_logic; -- para actualizar el reg con el set (nuevo optativo 2)
+signal reg_ADDR_out : std_logic_vector (31 downto 0); -- salida del registro reg_ADDR
+signal reg_set_out : std_logic_vector (1 downto 0); -- parte de reg_ADDR_out (por claridad)
+signal reg_Din_ini_en : std_logic; -- para actualizar el reg con el set (nuevo optativo 2)
+signal reg_Din_ini_out : std_logic_vector (31 downto 0); -- salida del registro reg_Din
+signal clk_inv : std_logic; -- clk invertido para optativo 1
 begin
  -------------------------------------------------------------------------------------------------- 
  -----MC_data: memoria RAM que almacena los 4 bloques de 4 datos que puede guardar la Cache
  -- dir palabra puede venir de la entrada (cuando se busca un dato solicitado por el Mips) o de la Unidad de control, UC, (cuando se está escribiendo un bloque nuevo 
  -------------------------------------------------------------------------------------------------- 
  dir_palabra <= ADDR(3 downto 2) when (mux_origen='0') else palabra_UC;
- dir_cjto <= ADDR(5 downto 4); -- es emplazamiento directo
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ --------------------------------------------------------- CAMBIO OPTATIVO 1: BUFFER DATOS Y ADDR  --------------------------------------------------------------------------
+	----------------------------------- Registro de 32b -----------------------------------
+	-- A ciclo cambiado (not clk) para que muestre los datos en el mismo ciclo en que se introducen:
+ clk_inv <= not clk;
+ reg_Din_ini: reg32 port map(	Din => Din, clk => clk_inv, reset => reset, load => reg_Din_ini_en, Dout => reg_Din_ini_out);
+ 
+ 
+--------------------------------------------------------- CAMBIO OPTATIVO 2: ADELANTO ENVIO --------------------------------------------------------------------------------
+	----------------------------------- Registro de 32b -----------------------------------
+	reg_ADDR_ini: reg32 port map(	Din => ADDR, clk => clk_inv, reset => reset, load => reg_ADDR_ini_en, Dout => reg_ADDR_out);
+	-- Añadimos un mux a la salida, que permita mandar a la CPU directamente el bus en funcion de una nueva señal mux_out originada en la UC_MC:
+	reg_set_out <= reg_ADDR_out (5 downto 4); -- direccion del set del principio 
+    dir_cjto <= ADDR(5 downto 4) when (mux_origen='0') else reg_set_out; -- Cambiado para elegir entre la direccion de cpu o el registro
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
  dir_MC <= dir_cjto&dir_palabra; --para direccionar una dato hay que especificar el cjto y la palabra.
  -- la entrada de datos de la MC puede venir del Mips (acceso normal) o del bus (gestión de fallos)
  MC_Din <= Din when (mux_origen='0') else MC_bus_Din;
@@ -146,22 +167,17 @@ begin
         end if;
     end process;
 	
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------- CAMBIO OPTATIVO 2: ADELANTO ENVIO --------------------------------------------------------------------------------	
-    -- Linea antigua: MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1') else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
-	-- Añadimos un mux a la salida, que permita mandar a la CPU directamente el bus en funcion de una nueva señal mux_out originada en la UC_MC:
-	MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1' and mux_out='0') else MC_Bus_Din when mux_out='1' else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 	
 -------------------------------------------------------------------------------------------------- 
 -----MC_Tags: memoria RAM que almacena las 4 etiquetas
 -------------------------------------------------------------------------------------------------- 
 ----------------------------------- Nuevo optativa 2 ----------------------------------------------------------------------
------------------------------------ Registro de 2 b 
-reg_set_ini: reg2 port map(		Din => dir_cjto, clk => clk, reset => reset, load => reg_set_ini_en, Dout => reg_set_out);
+ -- Linea antigua: MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1') else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
+	MC_Dout <= MC_data(conv_integer(dir_MC)) when (MC_RE='1' and mux_out='0') else MC_Bus_Din when mux_out='1' else "00000000000000000000000000000000"; --sólo se lee si RE_MC vale 1
+
 ---------------------------------------------------------------------------------------------------------------------------
--- NOTA CAMBIOS:
+-- NOTA CAMBIOS OPTATIVO 2:
 -- A continuacion he cambiado todas las señales dir_cjto por reg_set_out, para que utilice la direccion del conjunto del principio
 -- en caso de entrar en el estado "TerminarTransmision" de la parte optativa 2
 ---------------------------------------------------------------------------------------------------------------------------
@@ -175,7 +191,7 @@ memoria_cache_tags: process (CLK)
             end if;
         end if;
     end process;
-    MC_Tags_Dout <= MC_Tags(conv_integer(reg_set_out)) when (RE='1' or WE='1') else "00000000000000000000000000"; --sólo se lee si RE_MC vale 1
+    MC_Tags_Dout <= MC_Tags(conv_integer(dir_cjto)) when (RE='1' or WE='1') else "00000000000000000000000000"; --sólo se lee si RE_MC vale 1
 -------------------------------------------------------------------------------------------------- 
 -- registro de validez. Al resetear los bits de validez se ponen a 0 así evitamos falsos positivos por basura en las memorias
 -- en el bit de validez se escribe a la vez que en la memoria de etiquetas. Hay que poner a 1 el bit que toque y mantener los demás, para eso usamos una mascara generada por un decodificador
@@ -189,15 +205,15 @@ valid_bits_in <= valid_bits_out OR mask;
 bits_validez: reg4 port map(	Din => valid_bits_in, clk => clk, reset => reset, load => MC_tags_WE, Dout => valid_bits_out);
 
 -------------------------------------------------------------------------------------------------- 
-valid_bit <= 			valid_bits_out(0) when reg_set_out="00" else
-						valid_bits_out(1) when reg_set_out="01" else
-						valid_bits_out(2) when reg_set_out="10" else
-						valid_bits_out(3) when reg_set_out="11" else
+valid_bit <= 			valid_bits_out(0) when dir_cjto="00" else
+						valid_bits_out(1) when dir_cjto="01" else
+						valid_bits_out(2) when dir_cjto="10" else
+						valid_bits_out(3) when dir_cjto="11" else
 						'0';
 -------------------------------------------------------------------------------------------------- 
 -- Señal de hit: se activa cuando la etiqueta coincide y el bit de valido es 1
 hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0'; --comparador que compara el tag almacenado en MC con el de la dirección y si es el mismo y el bloque tiene el bit de válido activo devuelve un 1
---reg_set_ini <= ADDR(5 downto 4) when reg_set_ini_en ='1';
+--reg_set_ini <= ADDR(5 downto 4) when reg_ADDR_ini_en ='1';
 -------------------------------------------------------------------------------------------------- 
 
 ------------------------------------- Nuevo ------------------------------------------------------
@@ -210,7 +226,7 @@ palabraAddr <= ADDR(3 downto 2); -- Nuevo optativo 2: la UC necesita tener la di
 Unidad_Control: UC_MC port map (	clk => clk, reset=> reset, RE => RE, WE => WE, hit => hit, bus_TRDY => bus_TRDY, 
 									bus_DevSel => bus_DevSel, MC_RE => MC_RE, MC_WE => MC_WE, Replace_block => Replace_block, MC_bus_Rd_Wr => internal_MC_bus_Rd_Wr, 
 									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, palabraAddr => palabraAddr, mux_origen => mux_origen, mux_out => mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
-									block_addr => block_addr, MC_send_data => MC_send_data, Frame => MC_Frame,
+									block_addr => block_addr, MC_send_data => MC_send_data, Frame => MC_Frame,reg_ADDR_ini_en=>reg_ADDR_ini_en,
 									inc_rm => inc_rm, inc_wm => inc_wm, inc_wh => inc_wh );  
 --------------------------------------------------------------------------------------------------
 ----------- Contadores de eventos
@@ -223,10 +239,11 @@ cont_wh: counter port map (clk => clk, reset => reset, count_enable => inc_wh , 
 -------------------------------------------------------------------------------------------------- 
 MC_bus_Rd_Wr <= internal_MC_bus_Rd_Wr;
 --Si es escritura se manda la dirección de la palabra y si es un fallo de lectura la dirección del bloque que causó el fallo
-MC_Bus_ADDR <= 	ADDR(31 downto 2)&"00" when block_addr ='0' else 
-				ADDR(31 downto 4)&"0000"; 
-					 
-MC_Bus_data_out <= Din; -- se usa para mandar el dato a escribir
+MC_Bus_ADDR <= 	reg_ADDR_out(31 downto 2)&"00" when block_addr ='0' else 
+				reg_ADDR_out(31 downto 4)&"0000"; 
+--------------------------------------------------------------------------------------------------				
+-- CAMBIO OP 1:
+MC_Bus_data_out <= reg_Din_ini_out; -- se usa para mandar el dato a escribir
 --------------------------------------------------------------------------------------------------
 ----------- Salidas para el Mips
 -------------------------------------------------------------------------------------------------- 

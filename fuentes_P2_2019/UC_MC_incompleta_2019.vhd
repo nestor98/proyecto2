@@ -42,7 +42,8 @@ entity UC_MC is
             MC_WE : out  STD_LOGIC;
             MC_bus_Rd_Wr : out  STD_LOGIC; --1 para escritura en Memoria y 0 para lectura
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
-			reg_set_ini_en : out STD_LOGIC; -- para actualizar el reg con el set (nuevo optativo 2)
+			reg_ADDR_ini_en : out STD_LOGIC; -- para actualizar el reg con el set (nuevo optativo 2)
+			reg_Din_ini_en : out STD_LOGIC; -- optativa 1
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
 			mux_out: out STD_LOGIC; -- Nueva para la parte optativa 2, sera 1 sii se debe mandar el dato del Bus directamente al CPU
@@ -123,6 +124,8 @@ palabra <= palabra_UC;
 		inc_rm <= '0';
 		inc_wm <= '0';
 		inc_wh <= '0';
+		reg_Din_ini_en <= '0';
+		reg_ADDR_ini_en <= '0';
 			
         -- Estado INICIO:         
         if (state = Inicio and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
@@ -179,7 +182,7 @@ palabra <= palabra_UC;
 				--MC_send_addr='1';
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-				reg_set_ini_en <= '1'; -- para guardar el set del principio (optativo 2)
+				reg_ADDR_ini_en <= '1'; -- para guardar el set del principio (optativo 2)
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
@@ -206,6 +209,7 @@ palabra <= palabra_UC;
 				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
 				MC_WE<='1';
 				mux_origen<='1';
+				mux_out<='1';
 				count_enable<='1';
 				ready<='1';
 		-- TERMINAR TRANSMISION (PALABRA YA ENVIADA)
@@ -226,13 +230,6 @@ palabra <= palabra_UC;
 				mux_origen <= '1';
 				count_enable <= '1';
 				Frame<='1';
-				if (RE='0' and WE='0') then
-					ready<='1';
-				elsif (RE='1' and hit='1') then
-					MC_RE<='1';
-					ready<='1';
-				-- en cualquier otro caso, ready=0
-				end if;
 				if (last_word='0') then
 					next_state <= terminarTrans;
 				else
