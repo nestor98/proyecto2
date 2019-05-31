@@ -226,6 +226,13 @@ palabra <= palabra_UC;
 				mux_origen <= '1';
 				count_enable <= '1';
 				Frame<='1';
+				if (RE='0' and WE='0') then
+					ready<='1';
+				elsif (RE='1' and hit='1') then
+					MC_RE<='1';
+					ready<='1';
+				-- en cualquier otro caso, ready=0
+				end if;
 				if (last_word='0') then
 					next_state <= terminarTrans;
 				else
