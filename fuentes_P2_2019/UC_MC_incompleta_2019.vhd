@@ -172,7 +172,7 @@ palabra <= palabra_UC;
 				Block_addr<='1';
 				Frame<='1';
 				MC_send_addr<='1';
-				MC_bus_Rd_Wr<='0';
+				--MC_bus_Rd_Wr<='0';
 		elsif (state = esperarDEVSel_R and Bus_DevSel='1') then
 				next_state <= transPalabras;	
 				--Block_addr='1'; -- las de direccion se supone que se van
@@ -253,10 +253,10 @@ palabra <= palabra_UC;
 		-- ESCRITURA: 
 		elsif (state = esperarDEVSel_W) then
 				Frame<='1';
+				MC_send_addr<='1';
+				MC_bus_Rd_Wr<='1';
 				if (Bus_DevSel='0') then
 					next_state <= esperarDEVSel_W;
-					MC_send_addr<='1';
-					MC_bus_Rd_Wr<='1';
 				else 
 					next_state <= esperarTRDY_W;
 				end if;
@@ -270,10 +270,12 @@ palabra <= palabra_UC;
 		
 		elsif (state = esperarTRDY_W) then -- NO ME FIO MUCHO DE ESTE, REVISAR
 				Frame<='1';
+				MC_bus_Rd_Wr<='1'; -- no se si es imprescindible
 				if (Bus_TRDY='0') then
 					next_state <= esperarTRDY_W;
 				else 
 					next_state <= frame0;
+					
 					MC_send_data <= '1';
 				end if;
 				if (RE='0' and WE='0') then
