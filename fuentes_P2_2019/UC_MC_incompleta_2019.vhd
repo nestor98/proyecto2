@@ -276,7 +276,6 @@ palabra <= palabra_UC;
 					next_state <= esperarTRDY_W;
 				else 
 					next_state <= frame0;
-					
 					MC_send_data <= '1';
 				end if;
 				if (RE='0' and WE='0') then
