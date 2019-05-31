@@ -147,7 +147,7 @@ palabra <= palabra_UC;
 				MC_send_addr<='1';
 				MC_bus_Rd_Wr<='0';
 				inc_rm <='1';
-		elsif (state = Inicio and WE='1' and hit='1') then
+		elsif (state = Inicio and WE='1') then
 				if (Bus_DevSel='0') then
 					next_state <= esperarDEVSel_W;
 				else
@@ -156,19 +156,16 @@ palabra <= palabra_UC;
 				Frame<='1';
 				MC_bus_Rd_Wr<='1';
 				MC_send_addr<='1';
-				MC_WE<='1';
-				mux_origen<='0';
-				inc_wh <='1';
-		elsif (state = Inicio and WE='1' and hit='0') then
-				if (Bus_DevSel='0') then
-					next_state <= esperarDEVSel_W;
-				else
-					next_state <= esperarTRDY_W;
+				reg_ADDR_ini_en<='1';
+				reg_Din_ini_en<='1';
+				ready<='1';
+				if (hit='1') then
+					MC_WE<='1';
+					--mux_origen<='0';
+					inc_wh <='1';
+				else 
+					inc_wm<= '1';
 				end if;
-				Frame<='1';
-				MC_bus_Rd_Wr<='1';
-				MC_send_addr<='1';
-				inc_wm<= '1';
 		-- LECTURA:		
 		elsif (state = esperarDEVSel_R and Bus_DevSel='0') then
 				next_state <= esperarDEVSel_R;
@@ -254,15 +251,24 @@ palabra <= palabra_UC;
 				--Frame <=0
 				
 		-- ESCRITURA: 
-		elsif (state = esperarDEVSel_W and Bus_DevSel='0') then
-				next_state <= esperarDEVSel_W;
+		elsif (state = esperarDEVSel_W) then
 				Frame<='1';
 				MC_bus_Rd_Wr<='1';
-				MC_send_addr<='1';
-		elsif (state = esperarDEVSel_W and Bus_DevSel='1') then
-				next_state <= esperarTRDY_W;
-				Frame<='1';
-				MC_bus_Rd_Wr<='1';
+				if (Bus_DevSel='0') then
+					next_state <= esperarDEVSel_W;
+					MC_send_addr<='1';
+				else 
+					next_state <= esperarTRDY_W;
+				end if;
+				if (RE='0' and WE='0') then
+					ready<='1';
+				elsif (RE='1' and hit='1') then
+					MC_RE<='1';
+					ready<='1';
+				-- en cualquier otro caso, ready es 0
+				end if;
+				
+				------------------------- ME QUEDO AQUI -------------------------------
 		elsif (state = esperarTRDY_W and Bus_TRDY='0') then
 				next_state <= esperarTRDY_W;
 				Frame<='1';

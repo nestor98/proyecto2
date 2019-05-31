@@ -212,14 +212,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity memoriaRAM_D
 -- Compiling architecture Behavioral of memoriaRAM_D
 
-} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/UC_MC_incompleta_2019.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity UC_MC
--- Compiling architecture Behavioral of UC_MC
-
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/bits_shifter.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -265,6 +257,17 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package NUMERIC_STD
 -- Compiling entity testbench
 -- Compiling architecture behavior of testbench
+
+} {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/MC_datos.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity MC_datos
+-- Compiling architecture Behavioral of MC_datos
 
 } {} {}} D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/AOC-II/proyecto2/proyecto2/fuentes_P2_2019/reg4.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
