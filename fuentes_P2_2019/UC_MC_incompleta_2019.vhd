@@ -147,6 +147,7 @@ palabra <= palabra_UC;
 				MC_send_addr<='1';
 				MC_bus_Rd_Wr<='0';
 				inc_rm <='1';
+				reg_ADDR_ini_en<='1'; -- guardamos la direccion (optativo 2)
 		elsif (state = Inicio and WE='1') then
 				if (Bus_DevSel='0') then
 					next_state <= esperarDEVSel_W;
@@ -179,7 +180,7 @@ palabra <= palabra_UC;
 				--MC_send_addr='1';
 				Frame<='1'; 
 				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-				reg_ADDR_ini_en <= '1'; -- para guardar el set del principio (optativo 2)
+				--reg_ADDR_ini_en <= '1'; -- para guardar el set del principio (optativo 2)
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
