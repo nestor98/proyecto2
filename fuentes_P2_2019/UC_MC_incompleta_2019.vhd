@@ -253,10 +253,10 @@ palabra <= palabra_UC;
 		-- ESCRITURA: 
 		elsif (state = esperarDEVSel_W) then
 				Frame<='1';
-				MC_bus_Rd_Wr<='1';
 				if (Bus_DevSel='0') then
 					next_state <= esperarDEVSel_W;
 					MC_send_addr<='1';
+					MC_bus_Rd_Wr<='1';
 				else 
 					next_state <= esperarTRDY_W;
 				end if;
@@ -267,17 +267,22 @@ palabra <= palabra_UC;
 					ready<='1';
 				-- en cualquier otro caso, ready es 0
 				end if;
-				
-				------------------------- ME QUEDO AQUI -------------------------------
-		elsif (state = esperarTRDY_W and Bus_TRDY='0') then
-				next_state <= esperarTRDY_W;
+		
+		elsif (state = esperarTRDY_W) then -- NO ME FIO MUCHO DE ESTE, REVISAR
 				Frame<='1';
-				MC_bus_Rd_Wr<='1';
-		elsif (state = esperarTRDY_W and Bus_TRDY='1') then
-				next_state <= frame0;
-				Frame<='1';
-				ready<='1';
-				MC_send_data <= '1';
+				if (Bus_TRDY='0') then
+					next_state <= esperarTRDY_W;
+				else 
+					next_state <= frame0;
+				end if;
+				if (RE='0' and WE='0') then
+					ready<='1';
+				elsif (RE='1' and hit='1') then
+					MC_RE<='1';
+					ready<='1';
+				-- en cualquier otro caso, ready es 0
+				end if;
+		
    	-- Poner aquí las condiciones de vuestra máquina de estado
 	--  elsif() then
    	--  else
