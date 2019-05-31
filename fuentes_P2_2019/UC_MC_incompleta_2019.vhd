@@ -286,10 +286,6 @@ palabra <= palabra_UC;
 				-- en cualquier otro caso, ready es 0
 				end if;
 		
-   	-- Poner aquí las condiciones de vuestra máquina de estado
-	--  elsif() then
-   	--  else
-		
 		end if;
    end process;
  
