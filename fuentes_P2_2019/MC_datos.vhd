@@ -54,6 +54,7 @@ component UC_MC is
 			RE : in  STD_LOGIC; --RE y WE son las ordenes del MIPs
 			WE : in  STD_LOGIC;
 			hit : in  STD_LOGIC; --se activa si hay acierto
+			cjtoDist : in STD_LOGIC;
 			bus_TRDY : in  STD_LOGIC; --indica que la memoria no puede realizar la operación solicitada en este ciclo
 			Bus_DevSel: in  STD_LOGIC; --indica que la memoria ha reconocido que la dirección está dentro de su rango
 			MC_RE : out  STD_LOGIC; --RE y WE de la MC
@@ -115,7 +116,7 @@ signal MC_Tags : Ram_MC_Tags := (  		"00000000000000000000000000", "000000000000
 signal valid_bits_in, valid_bits_out, mask: std_logic_vector(3 downto 0); -- se usa para saber si un bloque tiene info válida. Cada bit representa un bloque.									
 signal dir_cjto: std_logic_vector(1 downto 0); -- se usa para elegir el cjto al que se accede en la cache de datos. 
 signal dir_palabra: std_logic_vector(1 downto 0); -- se usa para elegir la dato solicitada de un determinado bloque. 
-signal internal_MC_bus_Rd_Wr, mux_origen, MC_WE, MC_RE, MC_Tags_WE, hit, valid_bit, replace_block, block_addr: std_logic;
+signal internal_MC_bus_Rd_Wr, mux_origen, MC_WE, MC_RE, MC_Tags_WE, hit, cjtoDist, valid_bit, replace_block, block_addr: std_logic;
 signal palabra_UC: std_logic_vector(1 downto 0); --se usa al traer un bloque nuevo a la MC (va cambiando de valor para traer todas las palabras)
 signal dir_MC: std_logic_vector(3 downto 0); -- se usa para leer/escribir las datos almacenas en al MC. 
 signal MC_Din, MC_Dout: std_logic_vector (31 downto 0);
@@ -213,6 +214,8 @@ valid_bit <= 			valid_bits_out(0) when dir_cjto="00" else
 -------------------------------------------------------------------------------------------------- 
 -- Señal de hit: se activa cuando la etiqueta coincide y el bit de valido es 1
 hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0'; --comparador que compara el tag almacenado en MC con el de la dirección y si es el mismo y el bloque tiene el bit de válido activo devuelve un 1
+
+cjtoDist <=  '1' when (dir_cjto/=reg_ADDR_out(5 downto 4)) else '0'; --cjto ADDRin y ADDR_ini iguales
 --reg_set_ini <= ADDR(5 downto 4) when reg_ADDR_ini_en ='1';
 -------------------------------------------------------------------------------------------------- 
 
@@ -223,7 +226,7 @@ palabraAddr <= ADDR(3 downto 2); -- Nuevo optativo 2: la UC necesita tener la di
 -------------------------------------------------------------------------------------------------- 
 -----MC_UC: unidad de control
 -------------------------------------------------------------------------------------------------- 
-Unidad_Control: UC_MC port map (	clk => clk, reset=> reset, RE => RE, WE => WE, hit => hit, bus_TRDY => bus_TRDY, 
+Unidad_Control: UC_MC port map (	clk => clk, reset=> reset, RE => RE, WE => WE, hit => hit, cjtoDist=>cjtoDist, bus_TRDY => bus_TRDY, 
 									bus_DevSel => bus_DevSel, MC_RE => MC_RE, MC_WE => MC_WE, Replace_block => Replace_block, MC_bus_Rd_Wr => internal_MC_bus_Rd_Wr, 
 									MC_tags_WE=> MC_tags_WE, palabra => palabra_UC, palabraAddr => palabraAddr, mux_origen => mux_origen, mux_out => mux_out, ready => ready, MC_send_addr=> MC_send_addr, 
 									block_addr => block_addr, MC_send_data => MC_send_data, Frame => MC_Frame,reg_ADDR_ini_en=>reg_ADDR_ini_en,reg_Din_ini_en=>reg_Din_ini_en,

@@ -35,6 +35,7 @@ entity UC_MC is
 			RE : in  STD_LOGIC; --RE y WE son las ordenes del MIPs
 			WE : in  STD_LOGIC;
 			hit : in  STD_LOGIC; --se activa si hay acierto
+			cjtoDist : in STD_LOGIC;
 			bus_TRDY : in  STD_LOGIC; --indica que la memoria no puede realizar la operación solicitada en este ciclo
 			Bus_DevSel: in  STD_LOGIC; --indica que la memoria ha reconocido que la dirección está dentro de su rango
 			palabraAddr: in STD_LOGIC_VECTOR (1 downto 0); -- Nueva (parte optativa 2) para comprobar que palabra busca la CPU
@@ -103,7 +104,7 @@ palabra <= palabra_UC;
 
  
    -- Poned aquí el código de vuestra máquina de estados
-   OUTPUT_DECODE: process (state, hit, last_word, bus_TRDY, RE, WE, Bus_DevSel, palabra_buscada)
+   OUTPUT_DECODE: process (state, hit, cjtoDist, last_word, bus_TRDY, RE, WE, Bus_DevSel, palabra_buscada)
    begin
 		-- Se comienza dando los valores por defecto, si no se asigna otro valor en un estado valdrán lo que se asigna aquí
 		-- Así no hay que asignar valor a todas las señales en cada caso
@@ -217,9 +218,9 @@ palabra <= palabra_UC;
 				Frame<='1'; 
 				if (RE='0' and WE='0') then
 					ready<='1';
-				--elsif (RE='1' and hit='1') then
-					--MC_RE<='1';
-					--ready<='1';
+				elsif (RE='1' and hit='1' and cjtoDist='1') then
+					MC_RE<='1';
+					ready<='1';
 				-- en cualquier otro caso, ready=0
 				end if;
 				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
