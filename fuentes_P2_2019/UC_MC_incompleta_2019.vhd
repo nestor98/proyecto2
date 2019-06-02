@@ -201,6 +201,7 @@ palabra <= palabra_UC;
 				count_enable<='1';
 				MC_tags_WE<='1';
 				Replace_block<='1';
+				mux_out<='1';
 		elsif (state = transPalabras and Bus_TRDY='1' and palabra_buscada='1') then
 				next_state <= terminarTrans;
 				Frame<='1'; 
@@ -216,9 +217,9 @@ palabra <= palabra_UC;
 				Frame<='1'; 
 				if (RE='0' and WE='0') then
 					ready<='1';
-				elsif (RE='1' and hit='1') then
-					MC_RE<='1';
-					ready<='1';
+				--elsif (RE='1' and hit='1') then
+					--MC_RE<='1';
+					--ready<='1';
 				-- en cualquier otro caso, ready=0
 				end if;
 				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
@@ -228,6 +229,9 @@ palabra <= palabra_UC;
 				mux_origen <= '1';
 				count_enable <= '1';
 				Frame<='1';
+				if (RE='0' and WE='0') then
+					ready<='1';
+				end if;
 				if (last_word='0') then
 					next_state <= terminarTrans;
 				else
@@ -240,7 +244,7 @@ palabra <= palabra_UC;
 				next_state <= Inicio;
 				ready<='1';
 				MC_RE<='1';
-				mux_origen<='0';
+				--mux_origen<='0';
 				--Frame<='0'; -- lo hace por defecto
 		elsif (state = frame0 and RE= '0' and WE= '0') then -- si no piden nada no hacemos nada
 				next_state <= Inicio;
