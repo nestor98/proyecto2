@@ -148,6 +148,7 @@ begin
 --------------------------------------------------------- CAMBIO OPTATIVO 2: ADELANTO ENVIO --------------------------------------------------------------------------------
 	----------------------------------- Registro de 32b -----------------------------------
 	reg_ADDR_ini: reg32 port map(	Din => ADDR, clk => clk_inv, reset => reset, load => reg_ADDR_ini_en, Dout => reg_ADDR_out);
+	
 	-- Añadimos un mux a la salida, que permita mandar a la CPU directamente el bus en funcion de una nueva señal mux_out originada en la UC_MC:
 	reg_set_out <= reg_ADDR_out (5 downto 4); -- direccion del set del principio 
     dir_cjto <= ADDR(5 downto 4) when (mux_origen='0') else reg_set_out; -- Cambiado para elegir entre la direccion de cpu o el registro

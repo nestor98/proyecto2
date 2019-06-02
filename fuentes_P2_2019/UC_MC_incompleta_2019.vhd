@@ -163,12 +163,11 @@ palabra <= palabra_UC;
 				ready<='1';
 				if (hit='1') then
 					MC_WE<='1';
-					--mux_origen<='0';
 					inc_wh <='1';
 				else 
 					inc_wm<= '1';
 				end if;
-		-- LECTURA:		
+		-- LECTURA:	
 		elsif (state = esperarDEVSel_R and Bus_DevSel='0') then
 				next_state <= esperarDEVSel_R;
 				Block_addr<='1';
