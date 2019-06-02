@@ -185,7 +185,7 @@ memoria_cache_tags: process (CLK)
     begin
         if (CLK'event and CLK = '1') then
             if (MC_Tags_WE = '1') then -- sólo se escribe si MC_Tags_WE vale 1
-                MC_Tags(conv_integer(reg_set_out)) <= ADDR(31 downto 6);
+                MC_Tags(conv_integer(reg_set_out)) <= reg_ADDR_out(31 downto 6); -- inicialmente era ADDR, ahora tiene que ser la ADDR inicial, no la que le llega durante TerminarTransmision
 				-- report saca un mensaje en la consola del simulador. Nos imforma sobre qué etiqeta se ha escrito, dónde y cuándo
 				report "Simulation time : " & time'IMAGE(now) & ".  Tag written: " & integer'image(to_integer(unsigned(ADDR(31 downto 6)))) & ", in dir_MC = " & integer'image(to_integer(unsigned(dir_cjto)));
             end if;
