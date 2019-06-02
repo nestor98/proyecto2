@@ -43,7 +43,7 @@ entity UC_MC is
             MC_WE : out  STD_LOGIC;
             MC_bus_Rd_Wr : out  STD_LOGIC; --1 para escritura en Memoria y 0 para lectura
             MC_tags_WE : out  STD_LOGIC; -- para escribir la etiqueta en la memoria de etiquetas
-			reg_ADDR_ini_en : out STD_LOGIC; -- para actualizar el reg con el set (nuevo optativo 2)
+			reg_ADDR_ini_en : out STD_LOGIC; -- para actualizar el reg con la direccion (nuevo optativo 1 y 2)
 			reg_Din_ini_en : out STD_LOGIC; -- optativa 1
             palabra : out  STD_LOGIC_VECTOR (1 downto 0);--indica la palabra actual dentro de una transferencia de bloque (1ª, 2ª...)
             mux_origen: out STD_LOGIC; -- Se utiliza para elegir si el origen de la dirección y el dato es el Mips (cuando vale 0) o la UC y el bus (cuando vale 1)
@@ -174,29 +174,21 @@ palabra <= palabra_UC;
 				Block_addr<='1';
 				Frame<='1';
 				MC_send_addr<='1';
-				--MC_bus_Rd_Wr<='0';
 		elsif (state = esperarDEVSel_R and Bus_DevSel='1') then
-				next_state <= transPalabras;	
-				--Block_addr='1'; -- las de direccion se supone que se van
-				--MC_send_addr='1';
+				next_state <= transPalabras;
 				Frame<='1'; 
-				MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
-				--reg_ADDR_ini_en <= '1'; -- para guardar el set del principio (optativo 2)
 		elsif (state = transPalabras and Bus_TRDY='0') then
 				next_state <= transPalabras;
 				Frame<='1'; 
-				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
 		elsif (state = transPalabras and Bus_TRDY='1' and palabra_buscada='0') then
 				next_state <= transPalabras;
-				Frame<='1'; 
-				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
+				Frame<='1'; 	
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
 		elsif (state = transPalabras and Bus_TRDY='1' and last_word='1') then
 				next_state <= frame0;
 				Frame<='1'; 
-				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
 				MC_WE<='1';
 				mux_origen<='1';
 				count_enable<='1';
@@ -205,8 +197,7 @@ palabra <= palabra_UC;
 				mux_out<='1';
 		elsif (state = transPalabras and Bus_TRDY='1' and palabra_buscada='1') then
 				next_state <= terminarTrans;
-				Frame<='1'; 
-				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final	
+				Frame<='1'; 	
 				MC_WE<='1';
 				mux_origen<='1';
 				mux_out<='1';
@@ -223,9 +214,7 @@ palabra <= palabra_UC;
 					ready<='1';
 				-- en cualquier otro caso, ready=0
 				end if;
-				--MC_bus_Rd_Wr<='0'; -- creo que esta sigue hasta el final
 		elsif (state = terminarTrans and Bus_TRDY='1') then
-				-- ready <= '0'
 				MC_WE <= '1';
 				mux_origen <= '1';
 				count_enable <= '1';

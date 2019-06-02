@@ -215,7 +215,7 @@ valid_bit <= 			valid_bits_out(0) when dir_cjto="00" else
 -- Señal de hit: se activa cuando la etiqueta coincide y el bit de valido es 1
 hit <= '1' when ((MC_Tags_Dout= ADDR(31 downto 6)) AND (valid_bit='1'))else '0'; --comparador que compara el tag almacenado en MC con el de la dirección y si es el mismo y el bloque tiene el bit de válido activo devuelve un 1
 
-cjtoDist <=  '1' when (dir_cjto/=reg_ADDR_out(5 downto 4)) else '0'; --cjto ADDRin y ADDR_ini iguales
+cjtoDist <=  '1' when (dir_cjto/=reg_ADDR_out(5 downto 4)) else '0'; --cjto ADDRin y ADDR_ini distintos
 --reg_set_ini <= ADDR(5 downto 4) when reg_ADDR_ini_en ='1';
 -------------------------------------------------------------------------------------------------- 
 
