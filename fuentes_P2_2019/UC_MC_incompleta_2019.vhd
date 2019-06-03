@@ -262,9 +262,9 @@ palabra <= palabra_UC;
 				-- en cualquier otro caso, ready es 0
 				end if;
 		
-		elsif (state = esperarTRDY_W) then -- NO ME FIO MUCHO DE ESTE, REVISAR
+		elsif (state = esperarTRDY_W) then 
 				Frame<='1';
-				MC_bus_Rd_Wr<='1'; -- no se si es imprescindible
+				MC_bus_Rd_Wr<='1'; 
 				if (Bus_TRDY='0') then
 					next_state <= esperarTRDY_W;
 				else 
